@@ -1,0 +1,152 @@
+// NOTE(hajae): Default Typography
+h1 {
+  font-size: 96px;
+  line-height: 112px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 60px;
+  line-height: 72px;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 34px;
+  line-height: 42px;
+  font-weight: 400;
+}
+
+h5 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+h6 {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.subtitle1 {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.subtitle2 {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.body1 {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.body2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+}
+
+.overline {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+}
+
+// NOTE(hajae): Components Typography
+.button-large {
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.button-medium {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.button-small {
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.input-label {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+}
+
+.helper-text {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.input-text {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.avatar-initials {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.chip {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.tooltip {
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+.alert-title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.table-header {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.badge-label {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.toast {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+}

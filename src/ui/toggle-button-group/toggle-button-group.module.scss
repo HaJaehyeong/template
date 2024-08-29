@@ -1,0 +1,15 @@
+.toggle-button-group-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+
+  border: solid 1px var(--other-divider);
+  border-radius: 8px;
+
+  > div {
+    &:last-child {
+      box-shadow: 0 0 0;
+    }
+  }
+}

@@ -1,0 +1,213 @@
+.button-group-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  border-radius: 8px;
+
+  > button {
+    border-right: solid 1px var(--primary-alternative-dark);
+    border-radius: 0;
+    box-shadow: 0 0 0 !important;
+
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-right: 0;
+    }
+  }
+
+  &.secondary {
+    > button {
+      border-color: var(--secondary-alternative-dark);
+    }
+  }
+
+  &.error {
+    > button {
+      border-color: var(--error-alternative-dark);
+    }
+  }
+
+  &.info {
+    > button {
+      border-color: var(--info-alternative-dark);
+    }
+  }
+
+  &.success {
+    > button {
+      border-color: var(--success-alternative-dark);
+    }
+  }
+
+  &.warning {
+    > button {
+      border-color: var(--warning-alternative-dark);
+    }
+  }
+
+  &.outlined {
+    > button {
+      border-right: 0;
+
+      &:not(:first-child) {
+        margin-left: 1px;
+      }
+    }
+  }
+  &.text {
+    > button {
+      &:not(:last-child) {
+        border-right: solid 1px var(--primary-outlined-resting-background);
+      }
+    }
+
+    &.secondary {
+      > button {
+        &:not(:last-child) {
+          border-right: solid 1px var(--secondary-outlined-resting-background);
+        }
+      }
+    }
+    &.error {
+      > button {
+        &:not(:last-child) {
+          border-right: solid 1px var(--error-outlined-resting-background);
+        }
+      }
+    }
+    &.info {
+      > button {
+        &:not(:last-child) {
+          border-right: solid 1px var(--info-outlined-resting-background);
+        }
+      }
+    }
+    &.success {
+      > button {
+        &:not(:last-child) {
+          border-right: solid 1px var(--success-outlined-resting-background);
+        }
+      }
+    }
+    &.warning {
+      > button {
+        &:not(:last-child) {
+          border-right: solid 1px var(--warning-outlined-resting-background);
+        }
+      }
+    }
+  }
+}
+
+.button-vertical-group-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  border-radius: 8px;
+
+  > button {
+    border-bottom: solid 1px var(--primary-alternative-dark);
+    border-radius: 0;
+    box-shadow: 0 0 0 !important;
+
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-bottom: 0;
+    }
+  }
+
+  &.secondary {
+    > button {
+      border-color: var(--secondary-alternative-dark);
+    }
+  }
+
+  &.error {
+    > button {
+      border-color: var(--error-alternative-dark);
+    }
+  }
+
+  &.info {
+    > button {
+      border-color: var(--info-alternative-dark);
+    }
+  }
+
+  &.success {
+    > button {
+      border-color: var(--success-alternative-dark);
+    }
+  }
+
+  &.warning {
+    > button {
+      border-color: var(--warning-alternative-dark);
+    }
+  }
+
+  &.outlined {
+    > button {
+      border-bottom: 0;
+
+      &:not(:first-child) {
+        margin-top: 1px;
+      }
+    }
+  }
+  &.text {
+    > button {
+      &:not(:last-child) {
+        border-bottom: solid 1px var(--primary-outlined-resting-background);
+      }
+    }
+
+    &.secondary {
+      > button {
+        &:not(:last-child) {
+          border-bottom: solid 1px var(--secondary-outlined-resting-background);
+        }
+      }
+    }
+    &.error {
+      > button {
+        &:not(:last-child) {
+          border-bottom: solid 1px var(--error-outlined-resting-background);
+        }
+      }
+    }
+    &.info {
+      > button {
+        &:not(:last-child) {
+          border-bottom: solid 1px var(--info-outlined-resting-background);
+        }
+      }
+    }
+    &.success {
+      > button {
+        &:not(:last-child) {
+          border-bottom: solid 1px var(--success-outlined-resting-background);
+        }
+      }
+    }
+    &.warning {
+      > button {
+        &:not(:last-child) {
+          border-bottom: solid 1px var(--warning-outlined-resting-background);
+        }
+      }
+    }
+  }
+}

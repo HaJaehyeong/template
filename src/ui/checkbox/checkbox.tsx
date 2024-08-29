@@ -1,0 +1,56 @@
+'use client';
+import { ButtonColor, ButtonSize } from '@/types/types';
+import { ChangeEvent, useEffect, useRef } from 'react';
+import styles from './checkbox.module.scss';
+
+type UiCheckBoxProps = {
+  label?: string;
+  value?: string;
+  color?: ButtonColor;
+  size?: ButtonSize;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+};
+
+const UiCheckBox: React.FC<UiCheckBoxProps> = ({
+  label,
+  value,
+  color = 'primary',
+  size = 'm',
+  checked = false,
+  indeterminate = false,
+  disabled = false,
+  onChange,
+}) => {
+  const checkboxRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (checked && indeterminate && checkboxRef.current) {
+      checkboxRef.current.indeterminate = indeterminate;
+    } else if (!checked && indeterminate && checkboxRef.current) {
+      checkboxRef.current.indeterminate = !indeterminate;
+    }
+  }, [checked]);
+
+  return (
+    <div className={styles.checkboxWrapper}>
+      <div className={`${styles.checkbox} ${styles[color]} ${styles[size]}  ${disabled ? styles.disabled : ''}`}>
+        <input
+          ref={checkboxRef}
+          className={`${color} ${size}`}
+          value={value}
+          name=""
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => (onChange ? onChange(e) : {})}
+          disabled={disabled}
+        />
+      </div>
+      {label && <label className={disabled ? styles.labelDisabled : ''}>{label}</label>}
+    </div>
+  );
+};
+
+export default UiCheckBox;

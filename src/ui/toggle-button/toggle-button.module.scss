@@ -1,0 +1,28 @@
+.toggle-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: -1px 0px 0px 0px #0000001f inset;
+  cursor: pointer;
+
+  &.s {
+    padding: 4px;
+  }
+
+  &.m {
+    padding: 8px;
+  }
+
+  &.l {
+    padding: 12px;
+  }
+
+  &.active {
+    background-color: var(--action-selected);
+  }
+
+  &.divider-false {
+    box-shadow: 0 0 0;
+  }
+}

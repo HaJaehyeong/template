@@ -1,0 +1,15 @@
+.item {
+  padding: 8px 24px 8px 16px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--action-hover);
+  }
+
+  &.disabled {
+    cursor: default;
+    color: var(--action-disabled);
+    background-color: var(--other-paper-and-card);
+  }
+}

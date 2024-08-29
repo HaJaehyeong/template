@@ -1,0 +1,244 @@
+.btn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+
+  &.primary {
+    background-color: var(--primary-main);
+    color: var(--primary-contrast);
+
+    &:hover {
+      background-color: var(--primary-contained-hover-background);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--secondary-main);
+    color: var(--secondary-contrast);
+
+    &:hover {
+      background-color: var(--secondary-contained-hover-background);
+    }
+  }
+
+  &.error {
+    background-color: var(--error-main);
+    color: var(--error-contrast);
+
+    &:hover {
+      background-color: var(--error-contained-hover-background);
+    }
+  }
+
+  &.warning {
+    background-color: var(--warning-main);
+    color: var(--warning-contrast);
+
+    &:hover {
+      background-color: var(--warning-contained-hover-background);
+    }
+  }
+
+  &.info {
+    background-color: var(--info-main);
+    color: var(--info-contrast);
+
+    &:hover {
+      background-color: var(--info-contained-hover-background);
+    }
+  }
+
+  &.success {
+    background-color: var(--success-main);
+    color: var(--success-contrast);
+
+    &:hover {
+      background-color: var(--success-contained-hover-background);
+    }
+  }
+
+  &:disabled {
+    background-color: var(--action-disabled-bg);
+    color: var(--action-disabled);
+    pointer-events: none;
+  }
+
+  &.outlined {
+    background: transparent;
+    outline: 1px solid;
+    box-sizing: border-box;
+
+    &.primary {
+      outline-color: var(--primary-outlined-resting-background);
+      color: var(--primary-main);
+
+      &:hover {
+        background-color: var(--primary-outlined-hover-background);
+      }
+    }
+
+    &.secondary {
+      outline-color: var(--secondary-outlined-resting-background);
+      color: var(--secondary-main);
+
+      &:hover {
+        background-color: var(--secondary-outlined-hover-background);
+      }
+    }
+
+    &.error {
+      outline-color: var(--error-outlined-resting-background);
+      color: var(--error-main);
+
+      &:hover {
+        background-color: var(--error-outlined-hover-background);
+      }
+    }
+
+    &.warning {
+      outline-color: var(--warning-outlined-resting-background);
+      color: var(--warning-main);
+
+      &:hover {
+        background-color: var(--warning-outlined-hover-background);
+      }
+    }
+
+    &.info {
+      outline-color: var(--info-outlined-resting-background);
+      color: var(--info-main);
+
+      &:hover {
+        background-color: var(--info-outlined-hover-background);
+      }
+    }
+
+    &.success {
+      outline-color: var(--success-outlined-resting-background);
+      color: var(--success-main);
+
+      &:hover {
+        background-color: var(--success-outlined-hover-background);
+      }
+    }
+
+    &:disabled {
+      outline-color: var(--action-disabled-bg);
+      color: var(--action-disabled);
+    }
+  }
+
+  &.text {
+    background: transparent;
+    border-color: transparent;
+    color: var(--primary-main);
+
+    &:hover {
+      background-color: var(--action-hover);
+    }
+
+    &.primary {
+      color: var(--primary-main);
+    }
+
+    &.secondary {
+      color: var(--secondary-main);
+    }
+
+    &.error {
+      color: var(--error-main);
+    }
+
+    &.warning {
+      color: var(--warning-main);
+    }
+
+    &.info {
+      color: var(--info-main);
+    }
+
+    &.success {
+      color: var(--success-main);
+    }
+
+    &:disabled {
+      color: var(--action-disabled);
+    }
+  }
+
+  &.s {
+    padding: 4px 15px;
+  }
+
+  &.m {
+    padding: 7px 24px;
+  }
+
+  &.l {
+    padding: 8px 28px;
+  }
+
+  &.fab-extended {
+    &.s {
+      padding: 6px 15px;
+      border-radius: 15px;
+    }
+
+    &.m {
+      padding: 8px 24px;
+      border-radius: 24px;
+    }
+
+    &.l {
+      padding: 12px 28px;
+      border-radius: 28px;
+    }
+  }
+
+  &.fab-round {
+    &.s {
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    &.m {
+      padding: 24px;
+      border-radius: 24px;
+    }
+
+    &.l {
+      padding: 28px;
+      border-radius: 28px;
+    }
+  }
+
+  &.star {
+    background-color: transparent;
+
+    &.s {
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    &.m {
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    &.l {
+      padding: 25px;
+      border-radius: 25px;
+    }
+
+    &:hover {
+      background-color: var(--action-hover);
+    }
+  }
+}

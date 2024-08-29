@@ -1,0 +1,24 @@
+@import "@/styles/colors.scss";
+@import "@/styles/inputs.scss";
+@import "@/styles/shadow.scss";
+@import "@/styles/paper.scss";
+@import "@/styles/typography.scss";
+
+input,
+select,
+button {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+body {
+  margin: 20px;
+
+  background-color: var(--other-body-background);
+  transition: background-color 0.3s ease;
+
+  color: var(--text-primary);
+}

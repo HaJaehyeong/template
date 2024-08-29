@@ -1,0 +1,53 @@
+.checkbox-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox {
+  padding: 12px !important;
+
+  border-radius: 42px;
+  border: 0;
+
+  &.primary:hover {
+    background-color: var(--primary-outlined-hover-background);
+  }
+  &.secondary:hover {
+    background-color: var(--secondary-outlined-hover-background);
+  }
+  &.info:hover {
+    background-color: var(--info-outlined-hover-background);
+  }
+  &.success:hover {
+    background-color: var(--success-outlined-hover-background);
+  }
+  &.warning:hover {
+    background-color: var(--warning-outlined-hover-background);
+  }
+  &.error:hover {
+    background-color: var(--error-outlined-hover-background);
+  }
+  &.disabled:hover {
+    background-color: transparent;
+  }
+
+  &.s {
+    padding: 11.5px !important;
+    width: 15px;
+    height: 15px;
+  }
+  &.m {
+    width: 18px;
+    height: 18px;
+  }
+  &.l {
+    padding: 12.5px !important;
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.label-disabled {
+  color: var(--text-disabled);
+}

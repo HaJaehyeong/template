@@ -1,0 +1,228 @@
+/****************************/
+/********* CheckBox *********/
+/****************************/
+input[type="checkbox"] {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  width: 18px;
+  height: 18px;
+
+  border: solid 2px var(--text-secondary);
+  background-color: transparent;
+  border-radius: 3px;
+
+  cursor: pointer;
+}
+input[type="checkbox"]::before {
+  content: "";
+  display: block;
+  margin: -2px;
+  width: 18px;
+  height: 18px;
+
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+input[type="checkbox"].primary:checked::before,
+input[type="checkbox"].primary:indeterminate::before {
+  background-color: var(--primary-main);
+  border-color: var(--primary-main);
+}
+input[type="checkbox"].secondary:checked::before,
+input[type="checkbox"].secondary:indeterminate::before {
+  background-color: var(--secondary-main);
+  border-color: var(--secondary-main);
+}
+input[type="checkbox"].info:checked::before,
+input[type="checkbox"].info:indeterminate::before {
+  background-color: var(--info-main);
+  border-color: var(--info-main);
+}
+input[type="checkbox"].success:checked::before,
+input[type="checkbox"].success:indeterminate::before {
+  background-color: var(--success-main);
+  border-color: var(--success-main);
+}
+input[type="checkbox"].warning:checked::before,
+input[type="checkbox"].warning:indeterminate::before {
+  background-color: var(--warning-main);
+  border-color: var(--warning-main);
+}
+input[type="checkbox"].error:checked::before,
+input[type="checkbox"].error:indeterminate::before {
+  background-color: var(--error-main);
+  border-color: var(--error-main);
+}
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  border: solid 2px var(--primary-contrast);
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+input[type="checkbox"]:focus {
+  outline-color: rgba(var(--secondary-gray-rgb), 0.3);
+  outline-style: solid 2px;
+  outline-offset: 1px;
+  outline-width: 1px;
+}
+input[type="checkbox"].s,
+input[type="checkbox"].s::before {
+  width: 15px;
+  height: 15px;
+}
+input[type="checkbox"].s::after {
+  width: 3px;
+  height: 7px;
+  border-width: 0 1.5px 1.5px 0;
+}
+input[type="checkbox"].l,
+input[type="checkbox"].l::before {
+  width: 21px;
+  height: 21px;
+}
+input[type="checkbox"].l::after {
+  top: 40%;
+  width: 5px;
+  height: 10px;
+  border-width: 0 2.5px 2.5px 0;
+}
+input[type="checkbox"]:disabled {
+  border: solid 2px var(--action-disabled);
+  cursor: default;
+}
+input[type="checkbox"]:disabled:checked {
+  border: solid 2px transparent;
+  cursor: default;
+}
+input[type="checkbox"]:disabled:checked::before {
+  background-color: var(--action-disabled) !important;
+  border-color: var(--action-disabled) !important;
+}
+input[type="checkbox"]:indeterminate::after {
+  content: "";
+  position: absolute;
+  top: 44%;
+  transform: translateX(21%);
+  width: 10px;
+  height: 2px;
+  background-color: var(--primary-contrast);
+}
+
+/****************************/
+/********* RadioBtn *********/
+/****************************/
+input[type="radio"] {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+
+  border: solid 2px var(--text-secondary);
+  background-color: transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+input[type="radio"]::before {
+  content: "";
+  display: block;
+  margin: -2px;
+  width: 20px;
+  height: 20px;
+
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--primary-main);
+}
+input[type="radio"].primary:checked {
+  border-color: var(--primary-main);
+}
+input[type="radio"].secondary:checked {
+  border-color: var(--secondary-main);
+}
+input[type="radio"].info:checked {
+  border-color: var(--info-main);
+}
+input[type="radio"].success:checked {
+  border-color: var(--success-main);
+}
+input[type="radio"].warning:checked {
+  border-color: var(--warning-main);
+}
+input[type="radio"].error:checked {
+  border-color: var(--error-main);
+}
+input[type="radio"].primary:checked::after {
+  background-color: var(--primary-main);
+}
+input[type="radio"].secondary:checked::after {
+  background-color: var(--secondary-main);
+}
+input[type="radio"].info:checked::after {
+  background-color: var(--info-main);
+}
+input[type="radio"].success:checked::after {
+  background-color: var(--success-main);
+}
+input[type="radio"].warning:checked::after {
+  background-color: var(--warning-main);
+}
+input[type="radio"].error:checked::after {
+  background-color: var(--error-main);
+}
+input[type="radio"]:disabled {
+  border-color: var(--action-disabled) !important;
+  cursor: default;
+}
+input[type="radio"]:disabled:checked {
+  border-color: transparent;
+  cursor: default;
+}
+input[type="radio"]:disabled:checked::after {
+  background-color: var(--action-disabled);
+}
+input[type="radio"].s,
+input[type="radio"].s::before {
+  width: 17px;
+  height: 17px;
+}
+input[type="radio"].s::after {
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+}
+input[type="radio"].l,
+input[type="radio"].l::before {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+input[type="radio"].l::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+}
