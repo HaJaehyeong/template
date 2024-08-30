@@ -23,7 +23,6 @@ const Home: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
-        test commit
         <UiButton value="BUTTON" color="primary" size="s" />
         <UiButton value="BUTTON" color="primary" />
         <UiButton value="BUTTON" color="primary" size="l" />
