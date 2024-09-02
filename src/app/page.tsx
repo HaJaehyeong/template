@@ -7,6 +7,7 @@ import UiMenuItem from '@/ui/menu-item/menu-item';
 import UiRadioGroup from '@/ui/radio-group/radio-group';
 import UiRadio from '@/ui/radio/radio';
 import UiRating from '@/ui/rating/rating';
+import UiSlider from '@/ui/slider/slider';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
 import { RiHeartFill, RiHeartLine } from '@remixicon/react';
@@ -526,6 +527,15 @@ const Home: React.FC = () => {
           fillIcon={RiHeartFill}
           disabled
         />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+        <UiSlider max={100} value={100} onChange={() => {}} />
+        <UiSlider max={100} value={80} onChange={() => {}} />
+        <UiSlider max={100} value={60} onChange={() => {}} />
+        <UiSlider max={100} value={40} onChange={() => {}} />
+        <UiSlider max={100} value={20} onChange={() => {}} />
+        <UiSlider max={100} value={0} onChange={() => {}} />
       </div>
     </div>
   );
