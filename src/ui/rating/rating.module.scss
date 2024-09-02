@@ -1,0 +1,52 @@
+.rating-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.rating-icon {
+  position: relative;
+
+  cursor: pointer;
+
+  &.s {
+    width: 18px;
+    height: 18px;
+  }
+
+  &.m {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.l {
+    width: 30px;
+    height: 30px;
+  }
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: -1;
+}
+
+.fill-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  transition: transform 0.2s ease-in-out;
+  z-index: 1;
+
+  &:not(.disabled):hover {
+    transform: scale(1.15);
+  }
+}

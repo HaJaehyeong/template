@@ -6,8 +6,10 @@ import UiCheckBox from '@/ui/checkbox/checkbox';
 import UiMenuItem from '@/ui/menu-item/menu-item';
 import UiRadioGroup from '@/ui/radio-group/radio-group';
 import UiRadio from '@/ui/radio/radio';
+import UiRating from '@/ui/rating/rating';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
+import { RiHeartFill, RiHeartLine } from '@remixicon/react';
 import { useState } from 'react';
 import styles from './page.module.scss';
 
@@ -495,6 +497,36 @@ const Home: React.FC = () => {
           onChange={handleRadioChange}
         />
       </UiRadioGroup>
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
+        <UiRating rating={0} />
+        <UiRating rating={10} color="var(--error-main)" emptyIcon={RiHeartLine} fillIcon={RiHeartFill} />
+        <UiRating rating={20} />
+        <UiRating rating={25} />
+        <UiRating rating={50} />
+        <UiRating rating={50} disabled />
+        <UiRating rating={70} />
+        <UiRating rating={90} color="var(--error-main)" emptyIcon={RiHeartLine} fillIcon={RiHeartFill} />
+        <UiRating rating={90} color="var(--error-main)" emptyIcon={RiHeartLine} fillIcon={RiHeartFill} disabled />
+        <UiRating rating={100} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
+        <UiRating rating={30} size="s" />
+        <UiRating rating={50} size="m" />
+        <UiRating rating={70} size="l" />
+        <UiRating rating={70} size="l" disabled />
+        <UiRating rating={30} color="var(--error-main)" size="s" emptyIcon={RiHeartLine} fillIcon={RiHeartFill} />
+        <UiRating rating={50} color="var(--error-main)" size="m" emptyIcon={RiHeartLine} fillIcon={RiHeartFill} />
+        <UiRating rating={70} color="var(--error-main)" size="l" emptyIcon={RiHeartLine} fillIcon={RiHeartFill} />
+        <UiRating
+          rating={70}
+          color="var(--error-main)"
+          size="l"
+          emptyIcon={RiHeartLine}
+          fillIcon={RiHeartFill}
+          disabled
+        />
+      </div>
     </div>
   );
 };
