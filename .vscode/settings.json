@@ -1,0 +1,9 @@
+{
+  "editor.tokenColorCustomizations": {
+    "comments": "#c8c8ff86"
+  },
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  }
+}

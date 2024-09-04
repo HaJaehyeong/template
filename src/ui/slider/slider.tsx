@@ -1,62 +1,102 @@
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { ButtonSize } from '@/types/types';
+import { useEffect, useRef, useState } from 'react';
+import styles from './slider.module.scss';
 
 type UiSliderProps = {
-  max: number;
-  value: number;
-  onChange: (newValue: number) => void;
+  variant?: 'default' | 'discrete' | 'range';
+  size?: ButtonSize;
+  value: number | { min: number; max: number };
+  min?: number;
+  max?: number;
+  minGap?: number; // NOTE(hajae): 두 slider thumb의 차이의 최솟값 (variant가 'range'일 경우에만 동작)
+  disabled?: boolean;
+  withLabel?: boolean;
+  onChange: (newValue: { min: number; max: number }) => void;
 };
 
-const UiSlider: React.FC<UiSliderProps> = ({ max, value, onChange }) => {
-  const [sliderThumb, setSliderThumb] = useState((value / max) * 100);
-  const progressRef = useRef<HTMLProgressElement>(null);
+const UiSlider: React.FC<UiSliderProps> = ({
+  variant = 'default',
+  min = 0,
+  max = 100,
+  minGap = 0,
+  value,
+  onChange,
+}) => {
+  const rangeLeftRef = useRef<HTMLInputElement>(null);
+  const rangeRightRef = useRef<HTMLInputElement>(null);
+  const thumbLeftRef = useRef<HTMLDivElement>(null);
+  const thumbRightRef = useRef<HTMLDivElement>(null);
+  const rangeRef = useRef<HTMLDivElement>(null);
+  const [leftValue, setLeftValue] = useState<number>(typeof value === 'number' ? value : value.min);
+  const [rightValue, setRightValue] = useState<number>(
+    typeof value === 'number' ? value : max < value.max ? max : value.max
+  );
 
-  useEffect(() => {
-    const progressElement = progressRef.current;
+  const updateRangeStyles = () => {
+    if (
+      rangeLeftRef.current &&
+      rangeRightRef.current &&
+      thumbLeftRef.current &&
+      thumbRightRef.current &&
+      rangeRef.current
+    ) {
+      const min = +rangeLeftRef.current.min;
+      const max = +rangeLeftRef.current.max;
+      const leftPercent = ((leftValue - min) / (max - min)) * 100;
+      const rightPercent = ((rightValue - min) / (max - min)) * 100;
 
-    const handleMouseMove = (event: MouseEvent) => {
-      if (progressElement) {
-        const rect = progressElement.getBoundingClientRect();
-        const newValue = Math.min(Math.max(0, event.clientX - rect.left), rect.width);
-        const newPercentage = (newValue / rect.width) * 100;
-        setSliderThumb(newPercentage);
-        onChange(Math.round((newPercentage / 100) * max));
-      }
-    };
-
-    const handleMouseUp = () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-
-    const handleMouseDown = () => {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-    };
-
-    if (progressElement) {
-      progressElement.addEventListener('mousedown', handleMouseDown);
+      thumbLeftRef.current.style.left = `${leftPercent}%`;
+      thumbRightRef.current.style.left = `${rightPercent}%`;
+      rangeRef.current.style.left = `${leftPercent}%`;
+      rangeRef.current.style.width = `${rightPercent - leftPercent + 1}%`;
     }
-
-    return () => {
-      if (progressElement) {
-        progressElement.removeEventListener('mousedown', handleMouseDown);
-      }
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [max, onChange]);
+  };
 
   useEffect(() => {
-    setSliderThumb((value / max) * 100);
-  }, [value, max]);
+    updateRangeStyles();
+  }, [leftValue, rightValue]);
+
+  const handleLeftChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Math.min(+event.target.value, rightValue - (variant === 'range' ? minGap : 0));
+    setLeftValue(newValue);
+    onChange({ min: newValue, max: rightValue });
+  };
+
+  const handleRightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Math.max(+event.target.value, leftValue + (variant === 'range' ? minGap : 0));
+    setRightValue(newValue);
+    onChange({ min: leftValue, max: newValue });
+  };
 
   return (
-    <progress
-      ref={progressRef}
-      max={max}
-      value={sliderThumb}
-      style={{ '--thumb-position': `calc(${sliderThumb}% - 10px)` } as CSSProperties}
-    />
+    <div className={styles.sliderContainer}>
+      <input
+        ref={rangeLeftRef}
+        className={`${styles.rangeInput} ${variant === 'range' ? '' : styles.hide}`}
+        type="range"
+        min={min}
+        max={max}
+        value={leftValue}
+        onChange={handleLeftChange}
+      />
+      <input
+        ref={rangeRightRef}
+        className={styles.rangeInput}
+        type="range"
+        min={min}
+        max={max}
+        value={rightValue}
+        onChange={handleRightChange}
+      />
+      <div className={styles.track}>
+        <div ref={rangeRef} className={styles.range}></div>
+        <div
+          ref={thumbLeftRef}
+          className={`${styles.thumb} ${styles.left} ${variant === 'range' ? '' : styles.hide}`}
+        ></div>
+        <div ref={thumbRightRef} className={`${styles.thumb} ${styles.right}`}></div>
+      </div>
+    </div>
   );
 };
 
