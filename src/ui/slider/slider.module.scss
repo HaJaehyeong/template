@@ -37,7 +37,8 @@ input[type="range"].range-input {
     opacity: 0.16;
   }
 
-  &.hide {
+  &.hide,
+  &.disabled {
     display: none;
   }
 }
@@ -50,6 +51,10 @@ input[type="range"].range-input {
 
   background-color: var(--primary-outlined-resting-background);
   border-radius: 2px;
+
+  &.disabled {
+    background-color: rgba(#bdbdbd, 0.38);
+  }
 }
 
 .discrete {
@@ -62,8 +67,12 @@ input[type="range"].range-input {
   background-color: rgb(18, 18, 18);
   opacity: 0.8;
 
+  &.disabled {
+    background-color: var(--other-gray400);
+  }
+
   &.active {
-    background-color: #ffffff;
+    background-color: var(--primary-contrast);
   }
 }
 
@@ -87,6 +96,10 @@ input[type="range"].range-input {
 
   background-color: var(--primary-main);
   border-radius: 2px;
+
+  &.disabled {
+    background-color: var(--other-gray400);
+  }
 }
 
 .thumb {
@@ -98,6 +111,10 @@ input[type="range"].range-input {
   background-color: var(--primary-main);
   border-radius: 10px;
   z-index: 9;
+
+  &.disabled {
+    background-color: var(--other-gray400);
+  }
 }
 
 .tooltip {
@@ -107,7 +124,7 @@ input[type="range"].range-input {
   padding: 7px 15px;
   transform: translateX(-50%);
 
-  background-color: var(--other-gray);
+  background-color: var(--other-gray600);
   color: var(--primary-contrast);
   border-radius: 4px;
 
@@ -120,7 +137,7 @@ input[type="range"].range-input {
 
     border-width: 6px;
     border-style: solid;
-    border-color: var(--other-gray) transparent transparent transparent;
+    border-color: var(--other-gray600) transparent transparent transparent;
   }
 }
 

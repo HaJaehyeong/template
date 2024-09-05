@@ -23,6 +23,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
   step = 0,
   minGap = 0,
   value,
+  disabled = false,
   valueTooltipDisplay = false,
   valueLabelDisplay = false,
   onChange,
@@ -87,7 +88,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
       markElements.push(
         <span
           key={`mark-${i}`}
-          className={`${styles.discrete} ${isActive ? styles.active : ''}`}
+          className={`${styles.discrete} ${isActive ? styles.active : ''} ${disabled ? styles.disabled : ''}`}
           style={{ left: `${percent}%` }}
         />
       );
@@ -101,7 +102,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
       {/* NOTE(hajae): 숨겨져있는 왼쪽 input */}
       <input
         ref={rangeLeftRef}
-        className={`${styles.rangeInput} ${variant === 'range' ? '' : styles.hide}`}
+        className={`${styles.rangeInput} ${variant === 'range' ? '' : styles.hide} ${disabled ? styles.disabled : ''}`}
         type="range"
         min={min}
         max={max}
@@ -111,7 +112,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
       {/* NOTE(hajae): 숨겨져있는 오른쪽 input */}
       <input
         ref={rangeRightRef}
-        className={styles.rangeInput}
+        className={`${styles.rangeInput}  ${disabled ? styles.disabled : ''}`}
         type="range"
         min={min}
         max={max}
@@ -121,15 +122,21 @@ const UiSlider: React.FC<UiSliderProps> = ({
       />
 
       {/* NOTE(hajae): 보여지는 UI */}
-      <div className={styles.track}>
+      <div className={`${styles.track} ${disabled ? styles.disabled : ''}`}>
         {/* NOTE(hajae): 액티브된 영역 */}
-        <div ref={rangeRef} className={styles.range} />
+        <div ref={rangeRef} className={`${styles.range} ${disabled ? styles.disabled : ''}`} />
         {/* NOTE(hajae): 왼쪽 손잡이..? */}
-        <div ref={thumbLeftRef} className={`${styles.thumb} ${styles.left} ${variant === 'range' ? '' : styles.hide}`}>
+        <div
+          ref={thumbLeftRef}
+          className={`
+            ${styles.thumb} ${styles.left} 
+            ${variant === 'range' ? '' : styles.hide} 
+            ${disabled ? styles.disabled : ''}`}
+        >
           {valueTooltipDisplay && <div className={styles.tooltip}>{leftValue}</div>}
         </div>
         {/* NOTE(hajae): 오른쪽 손잡이..? */}
-        <div ref={thumbRightRef} className={`${styles.thumb} ${styles.right}`}>
+        <div ref={thumbRightRef} className={`${styles.thumb} ${styles.right} ${disabled ? styles.disabled : ''}`}>
           {valueTooltipDisplay && <div className={styles.tooltip}>{rightValue}</div>}
         </div>
         {/* NOTE(hajae): 일정 간격으로 .을 찍어 표시 (step에 영향을 받음) */}

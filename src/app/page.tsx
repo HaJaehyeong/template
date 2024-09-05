@@ -564,6 +564,9 @@ const Home: React.FC = () => {
           valueTooltipDisplay
           onChange={() => {}}
         />
+        <UiSlider min={20} max={50} value={{ min: 20, max: 50 }} disabled onChange={() => {}} />
+        <UiSlider variant="discrete" min={0} max={100} value={{ min: 20, max: 50 }} disabled onChange={() => {}} />
+        <UiSlider variant="range" max={100} value={{ min: 40, max: 60 }} disabled minGap={10} onChange={() => {}} />
       </div>
     </div>
   );
