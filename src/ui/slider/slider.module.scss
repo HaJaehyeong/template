@@ -52,6 +52,21 @@ input[type="range"].range-input {
   border-radius: 2px;
 }
 
+.discrete {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  top: 50%;
+  transform: translate(-1px, -50%);
+  background-color: rgb(18, 18, 18);
+  opacity: 0.8;
+
+  &.active {
+    background-color: #ffffff;
+  }
+}
+
 .range {
   position: absolute;
   top: 0;
@@ -71,6 +86,7 @@ input[type="range"].range-input {
 
   background-color: var(--primary-main);
   border-radius: 10px;
+  z-index: 9;
 }
 
 .left {

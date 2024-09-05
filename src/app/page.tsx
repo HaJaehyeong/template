@@ -530,13 +530,24 @@ const Home: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <UiSlider min={20} max={50} value={{ min: 30, max: 80 }} onChange={() => {}} />
+        <UiSlider min={20} max={50} value={{ min: 20, max: 50 }} onChange={() => {}} />
         <UiSlider max={80} value={{ min: 0, max: 80 }} onChange={() => {}} />
-        <UiSlider max={100} value={{ min: 0, max: 60 }} onChange={() => {}} />
-        <UiSlider max={100} value={{ min: 0, max: 40 }} onChange={() => {}} />
-        <UiSlider max={100} value={{ min: 0, max: 20 }} onChange={() => {}} />
+        <UiSlider variant="discrete" max={80} value={{ min: 0, max: 80 }} onChange={() => {}} />
+        <UiSlider variant="discrete" max={80} value={{ min: 0, max: 80 }} step={8} onChange={() => {}} />
+        <UiSlider max={100} value={{ min: 0, max: 60 }} step={5} onChange={() => {}} />
+        <UiSlider min={0} max={100} value={40} onChange={() => {}} />
+        <UiSlider max={100} value={20} onChange={() => {}} />
         <UiSlider max={100} value={{ min: 0, max: 0 }} onChange={() => {}} minGap={10} />
         <UiSlider variant="range" max={100} value={{ min: 40, max: 60 }} minGap={10} onChange={() => {}} />
+        <UiSlider
+          variant="range"
+          min={20}
+          max={100}
+          value={{ min: 40, max: 60 }}
+          minGap={5}
+          step={5}
+          onChange={() => {}}
+        />
       </div>
     </div>
   );
