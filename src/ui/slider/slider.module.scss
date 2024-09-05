@@ -22,6 +22,7 @@ input[type="range"].range-input {
   background-color: transparent;
   border: none;
 
+  cursor: pointer;
   z-index: 10;
   opacity: 0;
   transition: opacity 0.3s;
