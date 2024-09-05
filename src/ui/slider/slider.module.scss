@@ -67,6 +67,17 @@ input[type="range"].range-input {
   }
 }
 
+.label-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+
+  width: 100%;
+}
+
 .range {
   position: absolute;
   top: 0;
@@ -87,6 +98,30 @@ input[type="range"].range-input {
   background-color: var(--primary-main);
   border-radius: 10px;
   z-index: 9;
+}
+
+.tooltip {
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  padding: 7px 15px;
+  transform: translateX(-50%);
+
+  background-color: var(--other-gray);
+  color: var(--primary-contrast);
+  border-radius: 4px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--other-gray) transparent transparent transparent;
+  }
 }
 
 .left {

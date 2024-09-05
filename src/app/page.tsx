@@ -548,6 +548,22 @@ const Home: React.FC = () => {
           step={5}
           onChange={() => {}}
         />
+        <UiSlider
+          variant="discrete"
+          max={80}
+          value={{ min: 0, max: 80 }}
+          valueLabelDisplay
+          valueTooltipDisplay
+          onChange={() => {}}
+        />
+        <UiSlider
+          variant="range"
+          value={{ min: 0, max: 80 }}
+          minGap={15}
+          valueLabelDisplay
+          valueTooltipDisplay
+          onChange={() => {}}
+        />
       </div>
     </div>
   );

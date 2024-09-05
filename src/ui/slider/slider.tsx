@@ -11,7 +11,8 @@ type UiSliderProps = {
   step?: number;
   minGap?: number; // NOTE(hajae): 두 slider thumb의 차이의 최솟값 (variant가 'range'일 경우에만 동작)
   disabled?: boolean;
-  withLabel?: boolean;
+  valueTooltipDisplay?: boolean;
+  valueLabelDisplay?: boolean;
   onChange: (newValue: { min: number; max: number }) => void;
 };
 
@@ -22,6 +23,8 @@ const UiSlider: React.FC<UiSliderProps> = ({
   step = 0,
   minGap = 0,
   value,
+  valueTooltipDisplay = false,
+  valueLabelDisplay = false,
   onChange,
 }) => {
   const rangeLeftRef = useRef<HTMLInputElement>(null);
@@ -95,6 +98,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
 
   return (
     <div className={styles.sliderContainer}>
+      {/* NOTE(hajae): 숨겨져있는 왼쪽 input */}
       <input
         ref={rangeLeftRef}
         className={`${styles.rangeInput} ${variant === 'range' ? '' : styles.hide}`}
@@ -104,6 +108,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
         value={leftValue}
         onChange={handleLeftChange}
       />
+      {/* NOTE(hajae): 숨겨져있는 오른쪽 input */}
       <input
         ref={rangeRightRef}
         className={styles.rangeInput}
@@ -114,14 +119,28 @@ const UiSlider: React.FC<UiSliderProps> = ({
         value={rightValue}
         onChange={handleRightChange}
       />
+
+      {/* NOTE(hajae): 보여지는 UI */}
       <div className={styles.track}>
+        {/* NOTE(hajae): 액티브된 영역 */}
         <div ref={rangeRef} className={styles.range} />
-        <div
-          ref={thumbLeftRef}
-          className={`${styles.thumb} ${styles.left} ${variant === 'range' ? '' : styles.hide}`}
-        ></div>
-        <div ref={thumbRightRef} className={`${styles.thumb} ${styles.right}`}></div>
+        {/* NOTE(hajae): 왼쪽 손잡이..? */}
+        <div ref={thumbLeftRef} className={`${styles.thumb} ${styles.left} ${variant === 'range' ? '' : styles.hide}`}>
+          {valueTooltipDisplay && <div className={styles.tooltip}>{leftValue}</div>}
+        </div>
+        {/* NOTE(hajae): 오른쪽 손잡이..? */}
+        <div ref={thumbRightRef} className={`${styles.thumb} ${styles.right}`}>
+          {valueTooltipDisplay && <div className={styles.tooltip}>{rightValue}</div>}
+        </div>
+        {/* NOTE(hajae): 일정 간격으로 .을 찍어 표시 (step에 영향을 받음) */}
         {variant !== 'default' && marks}
+        {/* NOTE(hajae): 아래쪽 표시되는 라벨 */}
+        {valueLabelDisplay && (
+          <div className={styles.labelWrapper}>
+            <span className={styles.label}>{min}</span>
+            <span className={styles.label}>{max}</span>
+          </div>
+        )}
       </div>
     </div>
   );
