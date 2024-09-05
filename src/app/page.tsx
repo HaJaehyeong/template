@@ -528,14 +528,23 @@ const Home: React.FC = () => {
           disabled
         />
       </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiSlider value={50} onChange={() => {}} />
+        <UiSlider value={50} color="secondary" onChange={() => {}} />
+        <UiSlider value={50} color="info" onChange={() => {}} />
+        <UiSlider value={50} variant="discrete" color="success" onChange={() => {}} />
+        <UiSlider value={50} variant="discrete" color="warning" onChange={() => {}} />
+        <UiSlider value={50} variant="discrete" color="error" onChange={() => {}} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
         <UiSlider min={20} max={50} value={{ min: 20, max: 50 }} onChange={() => {}} />
         <UiSlider max={80} value={{ min: 0, max: 80 }} onChange={() => {}} />
         <UiSlider variant="discrete" max={80} value={{ min: 0, max: 80 }} onChange={() => {}} />
         <UiSlider variant="discrete" max={80} value={{ min: 0, max: 80 }} step={8} onChange={() => {}} />
         <UiSlider max={100} value={{ min: 0, max: 60 }} step={5} onChange={() => {}} />
         <UiSlider min={0} max={100} value={40} onChange={() => {}} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
         <UiSlider max={100} value={20} onChange={() => {}} />
         <UiSlider max={100} value={{ min: 0, max: 0 }} onChange={() => {}} minGap={10} />
         <UiSlider variant="range" max={100} value={{ min: 40, max: 60 }} minGap={10} onChange={() => {}} />
@@ -564,9 +573,53 @@ const Home: React.FC = () => {
           valueTooltipDisplay
           onChange={() => {}}
         />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
         <UiSlider min={20} max={50} value={{ min: 20, max: 50 }} disabled onChange={() => {}} />
         <UiSlider variant="discrete" min={0} max={100} value={{ min: 20, max: 50 }} disabled onChange={() => {}} />
-        <UiSlider variant="range" max={100} value={{ min: 40, max: 60 }} disabled minGap={10} onChange={() => {}} />
+        <UiSlider
+          variant="range"
+          color="secondary"
+          max={60}
+          value={{ min: 40, max: 60 }}
+          minGap={10}
+          onChange={() => {}}
+        />
+        <UiSlider variant="range" color="info" max={100} value={{ min: 40, max: 60 }} minGap={10} onChange={() => {}} />
+        <UiSlider
+          variant="range"
+          color="warning"
+          max={100}
+          value={{ min: 40, max: 60 }}
+          minGap={10}
+          onChange={() => {}}
+        />
+        <UiSlider
+          variant="range"
+          color="error"
+          max={100}
+          value={{ min: 40, max: 60 }}
+          minGap={10}
+          onChange={() => {}}
+        />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiSlider value={50} size="s" onChange={() => {}} />
+        <UiSlider variant="discrete" value={50} size="s" onChange={() => {}} />
+        <UiSlider variant="range" value={{ min: 20, max: 80 }} size="s" onChange={() => {}} />
+        <UiSlider variant="range" value={{ min: 20, max: 80 }} color="error" size="s" onChange={() => {}} />
+        <UiSlider variant="discrete" value={60} step={20} size="s" onChange={() => {}} />
+        <UiSlider
+          variant="discrete"
+          min={0}
+          max={20}
+          step={3}
+          value={8}
+          valueLabelDisplay
+          valueTooltipDisplay
+          size="s"
+          onChange={() => {}}
+        />
       </div>
     </div>
   );

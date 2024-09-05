@@ -1,10 +1,11 @@
-import { ButtonSize } from '@/types/types';
+import { ButtonColor } from '@/types/types';
 import { useEffect, useRef, useState } from 'react';
 import styles from './slider.module.scss';
 
 type UiSliderProps = {
   variant?: 'default' | 'discrete' | 'range';
-  size?: ButtonSize;
+  color?: ButtonColor;
+  size?: 's' | 'm';
   value: number | { min: number; max: number };
   min?: number;
   max?: number;
@@ -18,6 +19,8 @@ type UiSliderProps = {
 
 const UiSlider: React.FC<UiSliderProps> = ({
   variant = 'default',
+  color = 'primary',
+  size = 'm',
   min = 0,
   max = 100,
   step = 0,
@@ -88,7 +91,8 @@ const UiSlider: React.FC<UiSliderProps> = ({
       markElements.push(
         <span
           key={`mark-${i}`}
-          className={`${styles.discrete} ${isActive ? styles.active : ''} ${disabled ? styles.disabled : ''}`}
+          className={`${styles.discrete} ${isActive ? styles.active : ''} 
+            ${styles[color]} ${disabled ? styles.disabled : ''}`}
           style={{ left: `${percent}%` }}
         />
       );
@@ -98,11 +102,12 @@ const UiSlider: React.FC<UiSliderProps> = ({
   };
 
   return (
-    <div className={styles.sliderContainer}>
+    <div className={`${styles.sliderContainer} ${styles[size]}`}>
       {/* NOTE(hajae): 숨겨져있는 왼쪽 input */}
       <input
         ref={rangeLeftRef}
-        className={`${styles.rangeInput} ${variant === 'range' ? '' : styles.hide} ${disabled ? styles.disabled : ''}`}
+        className={`${styles.rangeInput} ${styles[color]} ${styles[size]} 
+          ${variant === 'range' ? '' : styles.hide} ${disabled ? styles.disabled : ''}`}
         type="range"
         min={min}
         max={max}
@@ -112,7 +117,7 @@ const UiSlider: React.FC<UiSliderProps> = ({
       {/* NOTE(hajae): 숨겨져있는 오른쪽 input */}
       <input
         ref={rangeRightRef}
-        className={`${styles.rangeInput}  ${disabled ? styles.disabled : ''}`}
+        className={`${styles.rangeInput} ${styles[color]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
         type="range"
         min={min}
         max={max}
@@ -122,21 +127,28 @@ const UiSlider: React.FC<UiSliderProps> = ({
       />
 
       {/* NOTE(hajae): 보여지는 UI */}
-      <div className={`${styles.track} ${disabled ? styles.disabled : ''}`}>
+      <div className={`${styles.track} ${styles[color]} ${styles[size]} ${disabled ? styles.disabled : ''}`}>
         {/* NOTE(hajae): 액티브된 영역 */}
-        <div ref={rangeRef} className={`${styles.range} ${disabled ? styles.disabled : ''}`} />
+        <div
+          ref={rangeRef}
+          className={`${styles.range} ${styles[color]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
+        />
         {/* NOTE(hajae): 왼쪽 손잡이..? */}
         <div
           ref={thumbLeftRef}
           className={`
-            ${styles.thumb} ${styles.left} 
+            ${styles.thumb} ${styles.left} ${styles[color]} ${styles[size]}
             ${variant === 'range' ? '' : styles.hide} 
             ${disabled ? styles.disabled : ''}`}
         >
           {valueTooltipDisplay && <div className={styles.tooltip}>{leftValue}</div>}
         </div>
         {/* NOTE(hajae): 오른쪽 손잡이..? */}
-        <div ref={thumbRightRef} className={`${styles.thumb} ${styles.right} ${disabled ? styles.disabled : ''}`}>
+        <div
+          ref={thumbRightRef}
+          className={`${styles.thumb} ${styles.right} 
+            ${styles[color]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
+        >
           {valueTooltipDisplay && <div className={styles.tooltip}>{rightValue}</div>}
         </div>
         {/* NOTE(hajae): 일정 간격으로 .을 찍어 표시 (step에 영향을 받음) */}

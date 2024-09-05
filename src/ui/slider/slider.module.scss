@@ -3,6 +3,10 @@
   padding: 20px;
   width: 320px;
   height: calc(100% - 4px);
+
+  &.s {
+    padding: 12px;
+  }
 }
 
 input[type="range"].range-input {
@@ -33,6 +37,41 @@ input[type="range"].range-input {
     border-radius: 20px;
   }
 
+  &.secondary {
+    &::-webkit-slider-thumb {
+      background-color: var(--secondary-contained-hover-background);
+    }
+  }
+  &.info {
+    &::-webkit-slider-thumb {
+      background-color: var(--info-contained-hover-background);
+    }
+  }
+  &.success {
+    &::-webkit-slider-thumb {
+      background-color: var(--success-contained-hover-background);
+    }
+  }
+  &.warning {
+    &::-webkit-slider-thumb {
+      background-color: var(--warning-contained-hover-background);
+    }
+  }
+  &.error {
+    &::-webkit-slider-thumb {
+      background-color: var(--error-contained-hover-background);
+    }
+  }
+
+  &.s {
+    width: 344px;
+
+    &::-webkit-slider-thumb {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   &:hover {
     opacity: 0.16;
   }
@@ -52,8 +91,28 @@ input[type="range"].range-input {
   background-color: var(--primary-outlined-resting-background);
   border-radius: 2px;
 
+  &.secondary {
+    background-color: var(--secondary-outlined-resting-background);
+  }
+  &.info {
+    background-color: var(--info-outlined-resting-background);
+  }
+  &.success {
+    background-color: var(--success-outlined-resting-background);
+  }
+  &.warning {
+    background-color: var(--warning-outlined-resting-background);
+  }
+  &.error {
+    background-color: var(--error-outlined-resting-background);
+  }
+
   &.disabled {
     background-color: rgba(#bdbdbd, 0.38);
+  }
+
+  &.s {
+    height: 2px;
   }
 }
 
@@ -97,6 +156,21 @@ input[type="range"].range-input {
   background-color: var(--primary-main);
   border-radius: 2px;
 
+  &.secondary {
+    background-color: var(--secondary-main);
+  }
+  &.info {
+    background-color: var(--info-main);
+  }
+  &.success {
+    background-color: var(--success-main);
+  }
+  &.warning {
+    background-color: var(--warning-main);
+  }
+  &.error {
+    background-color: var(--error-main);
+  }
   &.disabled {
     background-color: var(--other-gray400);
   }
@@ -112,8 +186,29 @@ input[type="range"].range-input {
   border-radius: 10px;
   z-index: 9;
 
+  &.secondary {
+    background-color: var(--secondary-main);
+  }
+  &.info {
+    background-color: var(--info-main);
+  }
+  &.success {
+    background-color: var(--success-main);
+  }
+  &.warning {
+    background-color: var(--warning-main);
+  }
+  &.error {
+    background-color: var(--error-main);
+  }
   &.disabled {
     background-color: var(--other-gray400);
+  }
+
+  &.s {
+    width: 12px;
+    height: 12px;
+    transform: translate(-6px, -4.8px);
   }
 }
 
