@@ -8,6 +8,7 @@ import UiRadioGroup from '@/ui/radio-group/radio-group';
 import UiRadio from '@/ui/radio/radio';
 import UiRating from '@/ui/rating/rating';
 import UiSlider from '@/ui/slider/slider';
+import UiSwitch from '@/ui/switch/switch';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
 import { RiHeartFill, RiHeartLine } from '@remixicon/react';
@@ -620,6 +621,28 @@ const Home: React.FC = () => {
           size="s"
           onChange={() => {}}
         />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiSwitch />
+        <UiSwitch checked />
+        <UiSwitch label="hello" />
+        <UiSwitch color="secondary" />
+        <UiSwitch color="info" />
+        <UiSwitch color="success" />
+        <UiSwitch color="warning" />
+        <UiSwitch color="error" />
+        <UiSwitch color="inactive" />
+        <UiSwitch color="primary" size="s" />
+        <UiSwitch color="secondary" size="s" />
+        <UiSwitch color="info" size="s" />
+        <UiSwitch color="primary" size="s" label="label" />
+        <UiSwitch color="secondary" size="s" label="label" />
+        <UiSwitch color="info" size="s" label="label" />
+        <UiSwitch color="inactive" size="s" label="label" />
+        <UiSwitch color="inactive" disabled label="label" />
+        <UiSwitch disabled label="label" checked />
+        <UiSwitch disabled size="s" label="label" />
       </div>
     </div>
   );

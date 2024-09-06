@@ -1,0 +1,161 @@
+.switch-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  padding: 5px 10px;
+  width: fit-content;
+
+  &.s {
+    gap: 8px;
+    padding: 3px 6px;
+  }
+}
+
+input[type="checkbox"].toggle {
+  position: relative;
+  all: initial;
+
+  &::before {
+    width: 34px;
+    height: 14px;
+    background-color: var(--primary-outlined-resting-background);
+    border-radius: 17px;
+    cursor: pointer;
+  }
+
+  &.secondary::before {
+    background-color: var(--secondary-outlined-resting-background);
+  }
+  &.info::before {
+    background-color: var(--info-outlined-resting-background);
+  }
+  &.success::before {
+    background-color: var(--success-outlined-resting-background);
+  }
+  &.warning::before {
+    background-color: var(--warning-outlined-resting-background);
+  }
+  &.error::before {
+    background-color: var(--error-outlined-resting-background);
+  }
+  &.inactive::before {
+    background-color: var(--secondary-outlined-resting-background);
+  }
+
+  &.s::before {
+    width: 26px;
+    height: 10px;
+    border-radius: 13px;
+  }
+
+  &.disabled::before {
+    background-color: var(--action-disabled-bg);
+    cursor: default;
+  }
+
+  &:checked + .switch {
+    transform: translateX(20px);
+  }
+
+  &.s:checked + .switch {
+    transform: translateX(16px);
+  }
+
+  &:checked::after {
+    display: none;
+  }
+}
+
+.switch {
+  position: absolute;
+
+  left: -4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 19px;
+
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &.s {
+    top: 3px;
+    left: -3px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    background-color: var(--primary-outlined-hover-background);
+  }
+  &.secondary:hover {
+    background-color: var(--secondary-outlined-hover-background);
+  }
+  &.info:hover {
+    background-color: var(--info-outlined-hover-background);
+  }
+  &.success:hover {
+    background-color: var(--success-outlined-hover-background);
+  }
+  &.warning:hover {
+    background-color: var(--warning-outlined-hover-background);
+  }
+  &.error:hover {
+    background-color: var(--error-outlined-hover-background);
+  }
+  &.disabled:hover {
+    background-color: transparent;
+    cursor: default;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 20px;
+    height: 20px;
+
+    border-radius: 10px;
+    background-color: var(--primary-main);
+    box-shadow:
+      0px 1px 3px 0px var(--box-shadow-color1),
+      0px 1px 1px 0px var(--box-shadow-color2),
+      0px 2px 1px -1px var(--box-shadow-color3);
+  }
+  &.secondary::before {
+    background-color: var(--secondary-main);
+  }
+  &.info::before {
+    background-color: var(--info-main);
+  }
+  &.success::before {
+    background-color: var(--success-main);
+  }
+  &.warning::before {
+    background-color: var(--warning-main);
+  }
+  &.error::before {
+    background-color: var(--error-main);
+  }
+  &.inactive::before {
+    background-color: var(--other-gray50);
+  }
+  &.disabled::before {
+    background-color: var(--other-gray100);
+  }
+
+  &.s::before {
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.disabled {
+  color: var(--text-disabled);
+}
