@@ -1,6 +1,6 @@
 'use client';
 import { ButtonColor, ButtonSize } from '@/types/types';
-import { ChangeEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './checkbox.module.scss';
 
 type UiCheckBoxProps = {
@@ -24,15 +24,21 @@ const UiCheckBox: React.FC<UiCheckBoxProps> = ({
   disabled = false,
   onChange,
 }) => {
+  const [check, setCheck] = useState(checked);
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (checked && indeterminate && checkboxRef.current) {
+    if (check && indeterminate && checkboxRef.current) {
       checkboxRef.current.indeterminate = indeterminate;
-    } else if (!checked && indeterminate && checkboxRef.current) {
+    } else if (!check && indeterminate && checkboxRef.current) {
       checkboxRef.current.indeterminate = !indeterminate;
     }
-  }, [checked]);
+  }, [check]);
+
+  const handleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
+    setCheck(event.target.checked);
+    if (onChange) onChange(event);
+  };
 
   return (
     <div className={styles.checkboxWrapper}>
@@ -43,8 +49,8 @@ const UiCheckBox: React.FC<UiCheckBoxProps> = ({
           value={value}
           name=""
           type="checkbox"
-          checked={checked}
-          onChange={(e) => (onChange ? onChange(e) : {})}
+          checked={check}
+          onChange={handleCheckbox}
           disabled={disabled}
         />
       </div>
