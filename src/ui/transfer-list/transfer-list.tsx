@@ -4,12 +4,22 @@ import UiButton from '../button/button';
 import UiCheckBox from '../checkbox/checkbox';
 import styles from './transfer-list.module.scss';
 
+type UiTransferListProps =
+  | { type: 'enhanced'; leftTitle: string; leftSubTitle?: string; rightTitle: string; rightSubTitle?: string }
+  | { type?: 'default'; leftTitle?: never; leftSubTitle?: never; rightTitle?: never; rightSubTitle?: never };
+
 type Item = {
   label: string;
   checked: boolean;
 };
 
-const UiTransferList: React.FC = () => {
+const UiTransferList: React.FC<UiTransferListProps> = ({
+  type = 'default',
+  leftTitle,
+  leftSubTitle,
+  rightTitle,
+  rightSubTitle,
+}) => {
   const [leftItems, setLeftItems] = useState<Item[]>([
     { label: 'List item 1', checked: false },
     { label: 'List item 2', checked: false },
@@ -62,13 +72,28 @@ const UiTransferList: React.FC = () => {
 
   return (
     <div className={styles.transferListWrapper}>
-      <div className={`${styles.leftList} popover square-false shadow6`}>
-        {leftItems.map((item, index) => (
-          <div key={index} className={styles.item} onClick={() => handleItemClick(index, 'left')}>
-            <UiCheckBox checked={item.checked} />
-            <span>{item.label}</span>
+      <div className={`${styles.leftList} ${type === 'enhanced' ? styles.enhanced : ''} popover square-false shadow6`}>
+        {type === 'enhanced' && (
+          <div className={`${styles.item} ${styles.enhancedItem}`}>
+            <UiCheckBox />
+            <div className={styles.title}>
+              <span>{leftTitle}</span>
+              {leftSubTitle && <span className={styles.sub}>{leftSubTitle}</span>}
+            </div>
           </div>
-        ))}
+        )}
+        <div className={`${styles.itemsWrapper} ${type === 'enhanced' ? styles.enhancedItemWrapper : ''}`}>
+          {leftItems.map((item, index) => (
+            <div
+              key={index}
+              className={`${styles.item} ${type === 'enhanced' ? styles.enhanced : ''}`}
+              onClick={() => handleItemClick(index, 'left')}
+            >
+              <UiCheckBox checked={item.checked} />
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.arrows}>
         <UiButton
@@ -104,13 +129,28 @@ const UiTransferList: React.FC = () => {
           onClick={handleToLeftAllItemsClick}
         />
       </div>
-      <div className={`${styles.rightList} popover square-false shadow6`}>
-        {rightItems.map((item, index) => (
-          <div key={index} className={styles.item} onClick={() => handleItemClick(index, 'right')}>
-            <UiCheckBox checked={item.checked} />
-            <span>{item.label}</span>
+      <div className={`${styles.rightList} ${type === 'enhanced' ? styles.enhanced : ''} popover square-false shadow6`}>
+        {type === 'enhanced' && (
+          <div className={`${styles.item} ${styles.enhancedItem}`}>
+            <UiCheckBox />
+            <div className={styles.title}>
+              <span>{rightTitle}</span>
+              {rightSubTitle && <span className={styles.sub}>{rightSubTitle}</span>}
+            </div>
           </div>
-        ))}
+        )}
+        <div className={`${styles.itemsWrapper} ${type === 'enhanced' ? styles.enhancedItemWrapper : ''}`}>
+          {rightItems.map((item, index) => (
+            <div
+              key={index}
+              className={`${styles.item} ${type === 'enhanced' ? styles.enhanced : ''}`}
+              onClick={() => handleItemClick(index, 'right')}
+            >
+              <UiCheckBox checked={item.checked} />
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

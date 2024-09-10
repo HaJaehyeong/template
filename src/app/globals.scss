@@ -15,6 +15,14 @@ button {
   outline: none;
 }
 
+div {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+}
+
 body {
   margin: 20px;
 

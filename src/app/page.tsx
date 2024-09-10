@@ -526,6 +526,14 @@ const Home: React.FC = () => {
 
       <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
         <UiTransferList />
+        <UiTransferList type="enhanced" leftTitle="Choises" rightTitle="Chosen" />
+        <UiTransferList
+          type="enhanced"
+          leftTitle="Choises"
+          leftSubTitle="뀨잇"
+          rightTitle="Chosen"
+          rightSubTitle="꾸뀨"
+        />
       </div>
     </div>
   );
