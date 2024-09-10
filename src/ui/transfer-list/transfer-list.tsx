@@ -1,8 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import UiButton from '../button/button';
 import UiCheckBox from '../checkbox/checkbox';
 import styles from './transfer-list.module.scss';
+
+type Item = {
+  label: string;
+  checked: boolean;
+};
 
 type UiTransferListProps =
   | {
@@ -24,11 +29,6 @@ type UiTransferListProps =
       rightSubTitle?: never;
     };
 
-type Item = {
-  label: string;
-  checked: boolean;
-};
-
 const UiTransferList: React.FC<UiTransferListProps> = ({
   type = 'default',
   leftDatas = [],
@@ -38,53 +38,78 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
   rightTitle,
   rightSubTitle,
 }) => {
-  const [leftItems, setLeftItems] = useState<Item[]>(
-    leftDatas.map((data) => {
-      return { label: data, checked: false };
-    })
+  const initialItems = (datas: string[]): Item[] => datas.map((data) => ({ label: data, checked: false }));
+
+  const [leftItems, setLeftItems] = useState<Item[]>(initialItems(leftDatas));
+  const [rightItems, setRightItems] = useState<Item[]>(initialItems(rightDatas));
+
+  const toggleItemCheck = useCallback((index: number, listType: 'left' | 'right') => {
+    const updateItems = (items: Item[], idx: number) =>
+      items.map((item, i) => (i === idx ? { ...item, checked: !item.checked } : item));
+
+    listType === 'left'
+      ? setLeftItems((prevItems) => updateItems(prevItems, index))
+      : setRightItems((prevItems) => updateItems(prevItems, index));
+  }, []);
+
+  const moveItems = useCallback(
+    (
+      from: Item[],
+
+      setFrom: React.Dispatch<React.SetStateAction<Item[]>>,
+      setTo: React.Dispatch<React.SetStateAction<Item[]>>,
+      all = false
+    ) => {
+      const [checkedItems, uncheckedItems] = all
+        ? [from, []]
+        : from.reduce<[Item[], Item[]]>(
+            ([checked, unchecked], item) => {
+              (item.checked ? checked : unchecked).push(item);
+              return [checked, unchecked];
+            },
+            [[], []]
+          );
+
+      setFrom(uncheckedItems);
+      setTo((prevItems) => prevItems.concat(checkedItems));
+    },
+    []
   );
 
-  const [rightItems, setRightItems] = useState<Item[]>(
-    rightDatas.map((data) => {
-      return { label: data, checked: false };
-    })
+  const handleToLeftTransferClick = useCallback(
+    () => moveItems(rightItems, setRightItems, setLeftItems),
+    [rightItems, leftItems, moveItems]
   );
 
-  const handleItemClick = (index: number, listType: 'left' | 'right') => {
-    if (listType === 'left') {
-      setLeftItems((prevItems) =>
-        prevItems.map((item, i) => (i === index ? { ...item, checked: !item.checked } : item))
-      );
-    } else {
-      setRightItems((prevItems) =>
-        prevItems.map((item, i) => (i === index ? { ...item, checked: !item.checked } : item))
-      );
-    }
-  };
+  const handleToRightTransferClick = useCallback(
+    () => moveItems(leftItems, setLeftItems, setRightItems),
+    [leftItems, rightItems, moveItems]
+  );
 
-  const handleToLeftTransferClick = () => {
-    const checkedRightItems = rightItems.filter((item) => item.checked);
-    const unCheckedRightItems = rightItems.filter((item) => !item.checked);
-    setRightItems(unCheckedRightItems);
-    setLeftItems((prevItems) => prevItems.concat(checkedRightItems));
-  };
+  const handleToLeftAllItemsClick = useCallback(
+    () => moveItems(rightItems, setRightItems, setLeftItems, true),
+    [rightItems, leftItems, moveItems]
+  );
 
-  const handleToRightTransferClick = () => {
-    const checkedLeftItems = leftItems.filter((item) => item.checked);
-    const unCheckedLeftItems = leftItems.filter((item) => !item.checked);
-    setLeftItems(unCheckedLeftItems);
-    setRightItems((prevItems) => prevItems.concat(checkedLeftItems));
-  };
+  const handleToRightAllItemsClick = useCallback(
+    () => moveItems(leftItems, setLeftItems, setRightItems, true),
+    [leftItems, rightItems, moveItems]
+  );
 
-  const handleToLeftAllItemsClick = () => {
-    setLeftItems((prevItems) => prevItems.concat(rightItems));
-    setRightItems([]);
-  };
-
-  const handleToRightAllItemsClick = () => {
-    setRightItems((prevItems) => prevItems.concat(leftItems));
-    setLeftItems([]);
-  };
+  const renderItems = useCallback(
+    (items: Item[], listType: 'left' | 'right') =>
+      items.map((item, index) => (
+        <div
+          key={index}
+          className={`${styles.item} ${type === 'enhanced' ? styles.enhanced : ''}`}
+          onClick={() => toggleItemCheck(index, listType)}
+        >
+          <UiCheckBox checked={item.checked} />
+          <span>{item.label}</span>
+        </div>
+      )),
+    [toggleItemCheck, type]
+  );
 
   return (
     <div className={styles.transferListWrapper}>
@@ -99,16 +124,7 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
           </div>
         )}
         <div className={`${styles.itemsWrapper} ${type === 'enhanced' ? styles.enhancedItemWrapper : ''}`}>
-          {leftItems.map((item, index) => (
-            <div
-              key={index}
-              className={`${styles.item} ${type === 'enhanced' ? styles.enhanced : ''}`}
-              onClick={() => handleItemClick(index, 'left')}
-            >
-              <UiCheckBox checked={item.checked} />
-              <span>{item.label}</span>
-            </div>
-          ))}
+          {renderItems(leftItems, 'left')}
         </div>
       </div>
       <div className={styles.arrows}>
@@ -156,16 +172,7 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
           </div>
         )}
         <div className={`${styles.itemsWrapper} ${type === 'enhanced' ? styles.enhancedItemWrapper : ''}`}>
-          {rightItems.map((item, index) => (
-            <div
-              key={index}
-              className={`${styles.item} ${type === 'enhanced' ? styles.enhanced : ''}`}
-              onClick={() => handleItemClick(index, 'right')}
-            >
-              <UiCheckBox checked={item.checked} />
-              <span>{item.label}</span>
-            </div>
-          ))}
+          {renderItems(rightItems, 'right')}
         </div>
       </div>
     </div>
