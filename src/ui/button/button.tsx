@@ -16,6 +16,7 @@ type UiButtonProps = {
   fabExtended?: boolean;
   fabRound?: boolean;
   star?: boolean;
+  width?: number;
 };
 
 const UiButton: React.FC<UiButtonProps> = ({
@@ -30,6 +31,7 @@ const UiButton: React.FC<UiButtonProps> = ({
   fabExtended = false,
   fabRound = false,
   star = false,
+  width,
 }) => {
   // NOTE(hajae): 중복시 우선순위가 높은 Type만 실행
   const selectButtonType = () => {
@@ -72,7 +74,7 @@ const UiButton: React.FC<UiButtonProps> = ({
     .join(' ');
 
   return (
-    <button className={classes} onClick={onClick} disabled={disabled}>
+    <button className={classes} onClick={onClick} disabled={disabled} style={{ width: width ? width + 'px' : '' }}>
       {leftIcon && <RiArrowLeftLine size={arrowSize} style={{ marginLeft: '-5px' }} />}
       {fabExtended && <RiAddLine size={20} style={{ marginLeft: '-5px' }} />}
       {fabRound && <RiAddLine size={25} style={{ position: 'absolute' }} />}

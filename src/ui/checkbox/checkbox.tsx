@@ -40,6 +40,10 @@ const UiCheckBox: React.FC<UiCheckBoxProps> = ({
     if (onChange) onChange(event);
   };
 
+  useEffect(() => {
+    setCheck(checked);
+  }, [checked]);
+
   return (
     <div className={styles.checkboxWrapper}>
       <div className={`${styles.checkbox} ${styles[color]} ${styles[size]}  ${disabled ? styles.disabled : ''}`}>

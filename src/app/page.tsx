@@ -11,13 +11,12 @@ import UiSlider from '@/ui/slider/slider';
 import UiSwitch from '@/ui/switch/switch';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
+import UiTransferList from '@/ui/transfer-list/transfer-list';
 import { RiHeartFill, RiHeartLine } from '@remixicon/react';
 import { useState } from 'react';
 import styles from './page.module.scss';
 
 const Home: React.FC = () => {
-  const [check, setCheck] = useState(false);
-
   const [selectedRadioValue, setSelectedRadioValue] = useState('a');
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -234,150 +233,30 @@ const Home: React.FC = () => {
         </UiToggleButtonGroup>
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
-        <UiCheckBox
-          label="Label"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          checked={check}
-          size="s"
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          checked={check}
-          label="Small"
-          size="s"
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          size="l"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          size="l"
-          label="Large"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
+        <UiCheckBox label="Label" />
+        <UiCheckBox />
+        <UiCheckBox size="s" />
+        <UiCheckBox label="Small" size="s" />
+        <UiCheckBox size="l" />
+        <UiCheckBox size="l" label="Large" />
         <UiCheckBox checked={false} disabled />
         <UiCheckBox checked={true} disabled />
         <UiCheckBox label="Disabled" checked={false} disabled />
         <UiCheckBox label="Disabled" checked={true} disabled />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
-        <UiCheckBox
-          label="Primary"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          label="Secondary"
-          color="secondary"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          label="Info"
-          color="info"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          label="Success"
-          color="success"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          label="Warning"
-          color="warning"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          label="Error"
-          color="error"
-          checked={check}
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          label="Indeterminate"
-          checked={check}
-          indeterminate
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          color="secondary"
-          checked={check}
-          indeterminate
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          color="info"
-          checked={check}
-          indeterminate
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          color="warning"
-          checked={check}
-          indeterminate
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          color="success"
-          checked={check}
-          indeterminate
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
-        <UiCheckBox
-          color="error"
-          checked={check}
-          indeterminate
-          onChange={(e) => {
-            setCheck((prev) => !prev);
-          }}
-        />
+        <UiCheckBox label="Primary" />
+        <UiCheckBox label="Secondary" color="secondary" />
+        <UiCheckBox label="Info" color="info" />
+        <UiCheckBox label="Success" color="success" />
+        <UiCheckBox label="Warning" color="warning" />
+        <UiCheckBox label="Error" color="error" />
+        <UiCheckBox label="Indeterminate" indeterminate />
+        <UiCheckBox color="secondary" indeterminate />
+        <UiCheckBox color="info" indeterminate />
+        <UiCheckBox color="warning" indeterminate />
+        <UiCheckBox color="success" indeterminate />
+        <UiCheckBox color="error" indeterminate />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
         <UiRadio checked={false} />
@@ -643,6 +522,10 @@ const Home: React.FC = () => {
         <UiSwitch color="inactive" disabled label="label" />
         <UiSwitch disabled label="label" checked />
         <UiSwitch disabled size="s" label="label" />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiTransferList />
       </div>
     </div>
   );
