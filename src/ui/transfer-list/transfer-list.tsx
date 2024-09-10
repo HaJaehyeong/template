@@ -5,8 +5,24 @@ import UiCheckBox from '../checkbox/checkbox';
 import styles from './transfer-list.module.scss';
 
 type UiTransferListProps =
-  | { type: 'enhanced'; leftTitle: string; leftSubTitle?: string; rightTitle: string; rightSubTitle?: string }
-  | { type?: 'default'; leftTitle?: never; leftSubTitle?: never; rightTitle?: never; rightSubTitle?: never };
+  | {
+      type: 'enhanced';
+      leftDatas?: string[];
+      rightDatas?: string[];
+      leftTitle: string;
+      leftSubTitle?: string;
+      rightTitle: string;
+      rightSubTitle?: string;
+    }
+  | {
+      type?: 'default';
+      leftDatas?: string[];
+      rightDatas?: string[];
+      leftTitle?: never;
+      leftSubTitle?: never;
+      rightTitle?: never;
+      rightSubTitle?: never;
+    };
 
 type Item = {
   label: string;
@@ -15,24 +31,24 @@ type Item = {
 
 const UiTransferList: React.FC<UiTransferListProps> = ({
   type = 'default',
+  leftDatas = [],
+  rightDatas = [],
   leftTitle,
   leftSubTitle,
   rightTitle,
   rightSubTitle,
 }) => {
-  const [leftItems, setLeftItems] = useState<Item[]>([
-    { label: 'List item 1', checked: false },
-    { label: 'List item 2', checked: false },
-    { label: 'List item 3', checked: false },
-    { label: 'List item 4', checked: false },
-  ]);
+  const [leftItems, setLeftItems] = useState<Item[]>(
+    leftDatas.map((data) => {
+      return { label: data, checked: false };
+    })
+  );
 
-  const [rightItems, setRightItems] = useState<Item[]>([
-    { label: 'List item 5', checked: false },
-    { label: 'List item 6', checked: false },
-    { label: 'List item 7', checked: false },
-    { label: 'List item 8', checked: false },
-  ]);
+  const [rightItems, setRightItems] = useState<Item[]>(
+    rightDatas.map((data) => {
+      return { label: data, checked: false };
+    })
+  );
 
   const handleItemClick = (index: number, listType: 'left' | 'right') => {
     if (listType === 'left') {

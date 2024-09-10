@@ -525,10 +525,21 @@ const Home: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-        <UiTransferList />
-        <UiTransferList type="enhanced" leftTitle="Choises" rightTitle="Chosen" />
+        <UiTransferList leftDatas={['List item', 'List item', 'List item', 'List item']} />
+        <UiTransferList
+          leftDatas={['List item', 'List item', 'List item', 'List item']}
+          rightDatas={['List item', 'List item', 'List item', 'List item']}
+        />
         <UiTransferList
           type="enhanced"
+          leftTitle="Choises"
+          rightTitle="Chosen"
+          leftDatas={['List item', 'List item', 'List item', 'List item']}
+        />
+        <UiTransferList
+          type="enhanced"
+          leftDatas={['List item', 'List item', 'List item', 'List item']}
+          rightDatas={['List item', 'List item', 'List item', 'List item']}
           leftTitle="Choises"
           leftSubTitle="뀨잇"
           rightTitle="Chosen"
