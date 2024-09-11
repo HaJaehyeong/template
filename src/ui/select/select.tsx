@@ -5,33 +5,37 @@ import UiMenuItem, { UiMenuItemProps } from '../menu-item/menu-item';
 import UiMenu from '../menu/menu';
 import styles from './select.module.scss';
 
+type Item = { label: string; value: string | number };
+
 type UiSelectProps = {
   label: string;
   children?: React.ReactNode;
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (value: string | number) => void;
 };
 
+/**
+ * NOTE(hajae)
+ * children을 UiMenuItem Component로 받기 때문에 해당 컴포넌트의 props를 가져오는 처리들이 필요
+ * 1. label(children), value를 items state에 저장
+ * 2. onClick event를 생성
+ */
 const UiSelect: React.FC<UiSelectProps> = ({ label, children, onChange }) => {
-  const [selectedValue, setSelectedValue] = useState<string | number>('');
+  const [item, setItem] = useState<Item>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [items, setItems] = useState(['hello', 'world', '!!!']);
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log('changed');
-    if (onChange) {
-      onChange(event);
-    }
-  };
-
-  const handleItemClick = (value: string | number) => {
-    setSelectedValue(value);
+  const handleItemClick = (selectedItem: Item) => {
+    setItem(selectedItem);
     setIsMenuOpen(false);
+    if (onChange) {
+      onChange(selectedItem.value);
+    }
   };
 
   const resettingPropsChildrens = Children.map(children, (child) => {
     if (React.isValidElement(child) && child.type === UiMenuItem) {
       return React.cloneElement(child as ReactElement<UiMenuItemProps>, {
-        onClick: () => handleItemClick(child.props.value),
+        onClick: () =>
+          handleItemClick({ label: child.props.children as string, value: child.props.value as string | number }),
       });
     }
     return child;
@@ -39,23 +43,13 @@ const UiSelect: React.FC<UiSelectProps> = ({ label, children, onChange }) => {
 
   return (
     <div className={styles.selectContainer}>
-      <select
-        className={styles.select}
-        onChange={handleChange}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        value={selectedValue}
-      >
-        <option value="" disabled></option>
-        {Array.from(items.values()).map((item, index) => (
-          <option key={index} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
+      <div className={styles.select} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {item ? item.label : ''}
+      </div>
       <UiMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(!isMenuOpen)}>
         {resettingPropsChildrens}
       </UiMenu>
-      <label className={`${styles.selectLabel} ${selectedValue !== '' ? styles.selected : ''}`}>{label}</label>
+      <label className={`${styles.selectLabel} ${item ? styles.selected : ''}`}>{label}</label>
       <RiArrowDownSFill size={20} className={styles.arrow} />
     </div>
   );

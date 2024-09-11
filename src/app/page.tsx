@@ -548,7 +548,12 @@ const Home: React.FC = () => {
         />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-        <UiSelect label="Label">
+        <UiSelect
+          label="Label"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
           <UiMenuItem value={'hello'}>first menu item</UiMenuItem>
           <UiMenuItem value={'world'}>second menu item</UiMenuItem>
           <UiMenuItem value={'!!!'}>third menu item</UiMenuItem>
