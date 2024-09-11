@@ -7,6 +7,7 @@ import UiMenuItem from '@/ui/menu-item/menu-item';
 import UiRadioGroup from '@/ui/radio-group/radio-group';
 import UiRadio from '@/ui/radio/radio';
 import UiRating from '@/ui/rating/rating';
+import UiSelect from '@/ui/select/select';
 import UiSlider from '@/ui/slider/slider';
 import UiSwitch from '@/ui/switch/switch';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
@@ -545,6 +546,13 @@ const Home: React.FC = () => {
           rightTitle="Chosen"
           rightSubTitle="꾸뀨"
         />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiSelect label="Label">
+          <UiMenuItem value={'hello'}>first menu item</UiMenuItem>
+          <UiMenuItem value={'world'}>second menu item</UiMenuItem>
+          <UiMenuItem value={'!!!'}>third menu item</UiMenuItem>
+        </UiSelect>
       </div>
     </div>
   );
