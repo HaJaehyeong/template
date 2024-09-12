@@ -15,28 +15,41 @@
   width: calc(100% - 20px);
   height: 40px;
 
+  background-color: transparent;
   border: 0;
   border-bottom: solid 1px var(--other-input-line);
-  background-color: transparent;
 
   font-size: 16px;
   color: var(--text-primary);
 
+  cursor: pointer;
+
   > legend {
-    width: auto;
-    overflow: hidden;
     display: block;
-    padding: 0;
-    height: 11px;
     visibility: hidden;
+    padding: 0 4px;
+    width: auto;
+    height: 11px;
+
+    font-size: 12px;
+    overflow: hidden;
   }
 
   &.outline {
     padding: 0px 10px 6px;
     width: calc(100% - 15px);
     height: 55px;
+
     border: solid 1px var(--other-divider);
     border-radius: 10px;
+  }
+
+  &:hover {
+    border-color: var(--action-active);
+
+    > .select-label {
+      color: var(--action-active);
+    }
   }
 }
 
@@ -50,7 +63,7 @@
 
 .select-label {
   position: absolute;
-  top: 28px;
+  top: 26px;
   left: 0;
 
   background-color: transparent;
@@ -62,7 +75,7 @@
   pointer-events: none;
 
   &.selected {
-    top: 0;
+    top: 5px;
     left: 0;
     font-size: 12px;
   }
@@ -71,7 +84,7 @@
     top: 35px;
     left: 15px;
 
-    color: var(--text-secondary);
+    // color: var(--text-secondary);
 
     &.selected {
       top: 5px;

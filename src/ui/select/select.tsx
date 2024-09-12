@@ -46,14 +46,14 @@ const UiSelect: React.FC<UiSelectProps> = ({ label, variant = 'standard', childr
   return (
     <div className={styles.selectContainer}>
       <fieldset className={`${styles.select} ${styles[variant]}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <legend style={{ maxWidth: item ? '100%' : '0' }}>hello</legend>
+        <legend style={{ maxWidth: item ? '100%' : '0', padding: item ? '' : '0' }}>{label}</legend>
         <div className={`${styles.item} ${styles[variant]}`}>{item ? item.label : ''}</div>
+        <label className={`${styles.selectLabel} ${styles[variant]} ${item ? styles.selected : ''}`}>{label}</label>
+        <RiArrowDownSFill size={20} className={`${styles.arrow} ${styles[variant]}`} />
       </fieldset>
       <UiMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(!isMenuOpen)}>
         {resettingPropsChildrens}
       </UiMenu>
-      <label className={`${styles.selectLabel} ${styles[variant]} ${item ? styles.selected : ''}`}>{label}</label>
-      <RiArrowDownSFill size={20} className={`${styles.arrow} ${styles[variant]}`} />
       {helperText && <div className={`${styles.helperText} ${styles[variant]}`}>{helperText}</div>}
     </div>
   );

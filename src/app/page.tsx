@@ -582,7 +582,7 @@ const Home: React.FC = () => {
         </UiSelect>
         <UiSelect
           variant="outline"
-          label="Label"
+          label="Label Test"
           helperText="Helper text"
           onChange={(value) => {
             console.log(value);
