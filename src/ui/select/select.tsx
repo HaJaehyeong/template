@@ -10,6 +10,7 @@ type Item = { label: string; value: string | number };
 type UiSelectProps = {
   label: string;
   children?: React.ReactNode;
+  helperText?: string;
   onChange?: (value: string | number) => void;
 };
 
@@ -19,7 +20,7 @@ type UiSelectProps = {
  * 1. label(children), value를 items state에 저장
  * 2. onClick event를 생성
  */
-const UiSelect: React.FC<UiSelectProps> = ({ label, children, onChange }) => {
+const UiSelect: React.FC<UiSelectProps> = ({ label, children, helperText, onChange }) => {
   const [item, setItem] = useState<Item>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -51,6 +52,7 @@ const UiSelect: React.FC<UiSelectProps> = ({ label, children, onChange }) => {
       </UiMenu>
       <label className={`${styles.selectLabel} ${item ? styles.selected : ''}`}>{label}</label>
       <RiArrowDownSFill size={20} className={styles.arrow} />
+      {helperText && <div className={styles.helperText}>{helperText}</div>}
     </div>
   );
 };

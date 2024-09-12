@@ -558,6 +558,17 @@ const Home: React.FC = () => {
           <UiMenuItem value={'world'}>second menu item</UiMenuItem>
           <UiMenuItem value={'!!!'}>third menu item</UiMenuItem>
         </UiSelect>
+        <UiSelect
+          label="Label"
+          helperText="Helper text"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
       </div>
     </div>
   );

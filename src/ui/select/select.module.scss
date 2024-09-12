@@ -1,6 +1,7 @@
 .select-container {
   position: relative;
   width: 220px;
+  height: 100%;
 }
 
 .select {
@@ -26,7 +27,7 @@
 
 .select-label {
   position: absolute;
-  top: 50%;
+  top: 21px;
   left: 0;
 
   background-color: transparent;
@@ -49,5 +50,10 @@
   top: 14px;
   right: 2px;
 
+  color: var(--action-active);
+}
+
+.helper-text {
+  margin-top: 5px;
   color: var(--action-active);
 }
