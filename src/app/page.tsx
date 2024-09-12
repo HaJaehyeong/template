@@ -525,7 +525,7 @@ const Home: React.FC = () => {
         <UiSwitch disabled size="s" label="label" />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
         <UiTransferList leftDatas={['List item', 'List item', 'List item', 'List item']} />
         <UiTransferList
           leftDatas={['List item', 'List item', 'List item', 'List item']}
@@ -582,6 +582,29 @@ const Home: React.FC = () => {
         </UiSelect>
         <UiSelect
           variant="outline"
+          label="Label Test"
+          helperText="Helper text"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="filed"
+          label="Label"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="filed"
           label="Label Test"
           helperText="Helper text"
           onChange={(value) => {
