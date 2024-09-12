@@ -9,6 +9,7 @@ type Item = { label: string; value: string | number };
 
 type UiSelectProps = {
   label: string;
+  variant?: 'standard' | 'outline' | 'filed';
   children?: React.ReactNode;
   helperText?: string;
   onChange?: (value: string | number) => void;
@@ -20,7 +21,7 @@ type UiSelectProps = {
  * 1. label(children), value를 items state에 저장
  * 2. onClick event를 생성
  */
-const UiSelect: React.FC<UiSelectProps> = ({ label, children, helperText, onChange }) => {
+const UiSelect: React.FC<UiSelectProps> = ({ label, variant = 'standard', children, helperText, onChange }) => {
   const [item, setItem] = useState<Item>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,15 +45,16 @@ const UiSelect: React.FC<UiSelectProps> = ({ label, children, helperText, onChan
 
   return (
     <div className={styles.selectContainer}>
-      <div className={styles.select} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        {item ? item.label : ''}
-      </div>
+      <fieldset className={`${styles.select} ${styles[variant]}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <legend style={{ maxWidth: item ? '100%' : '0' }}>hello</legend>
+        <div className={`${styles.item} ${styles[variant]}`}>{item ? item.label : ''}</div>
+      </fieldset>
       <UiMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(!isMenuOpen)}>
         {resettingPropsChildrens}
       </UiMenu>
-      <label className={`${styles.selectLabel} ${item ? styles.selected : ''}`}>{label}</label>
-      <RiArrowDownSFill size={20} className={styles.arrow} />
-      {helperText && <div className={styles.helperText}>{helperText}</div>}
+      <label className={`${styles.selectLabel} ${styles[variant]} ${item ? styles.selected : ''}`}>{label}</label>
+      <RiArrowDownSFill size={20} className={`${styles.arrow} ${styles[variant]}`} />
+      {helperText && <div className={`${styles.helperText} ${styles[variant]}`}>{helperText}</div>}
     </div>
   );
 };

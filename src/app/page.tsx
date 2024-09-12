@@ -569,6 +569,29 @@ const Home: React.FC = () => {
           <UiMenuItem value={2}>second menu item</UiMenuItem>
           <UiMenuItem value={3}>third menu item</UiMenuItem>
         </UiSelect>
+        <UiSelect
+          variant="outline"
+          label="Label"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="outline"
+          label="Label"
+          helperText="Helper text"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
       </div>
     </div>
   );
