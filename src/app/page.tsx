@@ -547,7 +547,7 @@ const Home: React.FC = () => {
           rightSubTitle="꾸뀨"
         />
       </div>
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
         <UiSelect
           label="Label"
           onChange={(value) => {
@@ -606,6 +606,81 @@ const Home: React.FC = () => {
         <UiSelect
           variant="filed"
           label="Label Test"
+          helperText="Helper text"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+        <UiSelect
+          label="Label"
+          size="s"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={'hello'}>first menu item</UiMenuItem>
+          <UiMenuItem value={'world'}>second menu item</UiMenuItem>
+          <UiMenuItem value={'!!!'}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          label="Label"
+          size="s"
+          helperText="Helper text"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="outline"
+          label="Label"
+          size="s"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="outline"
+          label="Label Test"
+          size="s"
+          helperText="Helper text"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="filed"
+          label="Label"
+          size="s"
+          onChange={(value) => {
+            console.log(value);
+          }}
+        >
+          <UiMenuItem value={1}>first menu item</UiMenuItem>
+          <UiMenuItem value={2}>second menu item</UiMenuItem>
+          <UiMenuItem value={3}>third menu item</UiMenuItem>
+        </UiSelect>
+        <UiSelect
+          variant="filed"
+          label="Label Test"
+          size="s"
           helperText="Helper text"
           onChange={(value) => {
             console.log(value);

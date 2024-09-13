@@ -1,7 +1,6 @@
 .select-container {
   position: relative;
   width: 220px;
-  height: 100%;
 }
 
 .select {
@@ -11,9 +10,9 @@
 
   inset: -5px 0px 0px;
   margin: 0px;
-  padding: 0 0 6px 0;
+  padding: 0;
   width: calc(100% - 20px);
-  height: 40px;
+  height: 47px;
 
   background-color: transparent;
   border: 0;
@@ -23,6 +22,11 @@
   color: var(--text-primary);
 
   cursor: pointer;
+
+  &.s {
+    padding: 0 0 4px 0;
+    height: 35px;
+  }
 
   > legend {
     display: block;
@@ -36,23 +40,31 @@
   }
 
   &.outline {
-    padding: 0px 10px 6px;
-    width: calc(100% - 15px);
-    height: 55px;
+    padding: 0 15px 0 10px;
+    width: calc(100% - 27px);
+    height: 58px;
 
     border: solid 1px var(--other-divider);
     border-radius: 10px;
+
+    &.s {
+      height: 42px;
+    }
   }
 
   &.filed {
-    padding: 0px 10px 6px;
-    width: calc(100% - 15px);
-    height: 55px;
+    padding: 0 15px 0 10px;
+    width: calc(100% - 25px);
+    height: 59px;
 
     background-color: var(--other-input-background);
     border-bottom: solid 1px var(--other-ouline-border);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+
+    &.s {
+      height: 50px;
+    }
   }
 
   &:hover {
@@ -68,7 +80,7 @@
   padding: 0;
 
   &.outline {
-    padding: 0 5px;
+    padding: 0 0 2px 4px;
   }
 
   &.filed {
@@ -82,7 +94,7 @@
 
 .select-label {
   position: absolute;
-  top: 26px;
+  top: 30px;
   left: 0;
 
   background-color: transparent;
@@ -93,6 +105,9 @@
   transition: all 0.2s ease;
   pointer-events: none;
 
+  &.s {
+    top: 26px;
+  }
   &.selected {
     top: 5px;
     left: 0;
@@ -100,8 +115,12 @@
   }
 
   &.outline {
-    top: 35px;
+    top: 33px;
     left: 15px;
+
+    &.s {
+      top: 25px;
+    }
 
     &.selected {
       top: 5px;
@@ -110,8 +129,12 @@
   }
 
   &.filed {
-    top: 35px;
+    top: 33px;
     left: 15px;
+
+    &.s {
+      top: 29px;
+    }
 
     &.selected {
       top: 20px;
@@ -122,23 +145,39 @@
 
 .arrow {
   position: absolute;
-  top: 14px;
+  top: 18px;
   right: 20px;
 
   color: var(--action-active);
 
+  &.s {
+    top: 14px;
+  }
+
   &.outline {
-    top: 25px;
-    right: 0px;
+    top: 24px;
+    right: 10px;
+
+    &.s {
+      top: 16px;
+    }
   }
 
   &.filed {
     top: 25px;
-    right: 0px;
+    right: 10px;
     transition: all 0.2s ease;
+
+    &.s {
+      top: 20px;
+    }
 
     &.selected {
       top: 30px;
+
+      &.s {
+        top: 28px;
+      }
     }
   }
 }
@@ -146,6 +185,11 @@
 .helper-text {
   margin-top: 5px;
   color: var(--action-active);
+  font-size: 12px;
+
+  &.s {
+    margin-top: 3px;
+  }
 
   &.outline,
   &.filed {

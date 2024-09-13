@@ -10,6 +10,7 @@ type Item = { label: string; value: string | number };
 type UiSelectProps = {
   label: string;
   variant?: 'standard' | 'outline' | 'filed';
+  size?: 's' | 'm';
   children?: React.ReactNode;
   helperText?: string;
   onChange?: (value: string | number) => void;
@@ -21,7 +22,14 @@ type UiSelectProps = {
  * 1. label(children), value를 items state에 저장
  * 2. onClick event를 생성
  */
-const UiSelect: React.FC<UiSelectProps> = ({ label, variant = 'standard', children, helperText, onChange }) => {
+const UiSelect: React.FC<UiSelectProps> = ({
+  label,
+  variant = 'standard',
+  size = 'm',
+  children,
+  helperText,
+  onChange,
+}) => {
   const [item, setItem] = useState<Item>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -45,18 +53,26 @@ const UiSelect: React.FC<UiSelectProps> = ({ label, variant = 'standard', childr
 
   return (
     <div className={styles.selectContainer}>
-      <fieldset className={`${styles.select} ${styles[variant]}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <fieldset
+        className={`${styles.select} ${styles[variant]} ${styles[size]}`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
         <legend style={{ maxWidth: item ? '100%' : '0', padding: item ? '' : '0' }}>{label}</legend>
         <div className={`${styles.item} ${styles[variant]} ${item ? styles.selected : ''}`}>
           {item ? item.label : ''}
         </div>
-        <label className={`${styles.selectLabel} ${styles[variant]} ${item ? styles.selected : ''}`}>{label}</label>
-        <RiArrowDownSFill size={20} className={`${styles.arrow} ${styles[variant]} ${item ? styles.selected : ''}`} />
+        <label className={`${styles.selectLabel} ${styles[variant]} ${styles[size]} ${item ? styles.selected : ''}`}>
+          {label}
+        </label>
+        <RiArrowDownSFill
+          size={20}
+          className={`${styles.arrow} ${styles[variant]} ${styles[size]} ${item ? styles.selected : ''}`}
+        />
       </fieldset>
       <UiMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(!isMenuOpen)}>
         {resettingPropsChildrens}
       </UiMenu>
-      {helperText && <div className={`${styles.helperText} ${styles[variant]}`}>{helperText}</div>}
+      {helperText && <div className={`${styles.helperText} ${styles[variant]} ${styles[size]}`}>{helperText}</div>}
     </div>
   );
 };
