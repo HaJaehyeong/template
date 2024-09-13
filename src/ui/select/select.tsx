@@ -1,6 +1,6 @@
 'use client';
 import { RiArrowDownSFill } from '@remixicon/react';
-import React, { Children, ReactElement, useState } from 'react';
+import React, { Children, ReactElement, useEffect, useState } from 'react';
 import UiMenuItem, { UiMenuItemProps } from '../menu-item/menu-item';
 import UiMenu from '../menu/menu';
 import styles from './select.module.scss';
@@ -11,6 +11,9 @@ type UiSelectProps = {
   label: string;
   variant?: 'standard' | 'outline' | 'filed';
   size?: 's' | 'm';
+  isError?: boolean;
+  disabled?: boolean;
+  defaultValue?: string | number;
   children?: React.ReactNode;
   helperText?: string;
   onChange?: (value: string | number) => void;
@@ -26,12 +29,27 @@ const UiSelect: React.FC<UiSelectProps> = ({
   label,
   variant = 'standard',
   size = 'm',
+  isError = false,
+  disabled = false,
+  defaultValue,
   children,
   helperText,
   onChange,
 }) => {
   const [item, setItem] = useState<Item>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (defaultValue && children) {
+      Children.forEach(children, (child) => {
+        if (React.isValidElement(child) && child.type === UiMenuItem) {
+          if (child.props.value === defaultValue) {
+            setItem({ label: child.props.children as string, value: defaultValue });
+          }
+        }
+      });
+    }
+  }, [defaultValue, children]);
 
   const handleItemClick = (selectedItem: Item) => {
     setItem(selectedItem);
@@ -52,16 +70,23 @@ const UiSelect: React.FC<UiSelectProps> = ({
   });
 
   return (
-    <div className={styles.selectContainer}>
+    <div className={`${styles.selectContainer} ${disabled ? styles.disabled : ''}`}>
       <fieldset
-        className={`${styles.select} ${styles[variant]} ${styles[size]}`}
+        className={`${styles.select} ${styles[variant]} ${styles[size]} ${isMenuOpen ? styles.active : ''} 
+          ${isError ? styles.error : ''}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <legend style={{ maxWidth: item ? '100%' : '0', padding: item ? '' : '0' }}>{label}</legend>
-        <div className={`${styles.item} ${styles[variant]} ${item ? styles.selected : ''}`}>
+        <div
+          className={`${styles.item} ${styles[variant]} ${item ? styles.selected : ''} 
+            ${disabled ? styles.disabled : ''}`}
+        >
           {item ? item.label : ''}
         </div>
-        <label className={`${styles.selectLabel} ${styles[variant]} ${styles[size]} ${item ? styles.selected : ''}`}>
+        <label
+          className={`${styles.selectLabel} ${styles[variant]} ${styles[size]}
+           ${item ? styles.selected : ''} ${disabled ? styles.disabled : ''}`}
+        >
           {label}
         </label>
         <RiArrowDownSFill
