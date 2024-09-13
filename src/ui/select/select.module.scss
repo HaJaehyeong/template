@@ -1,6 +1,7 @@
 .select-container {
   position: relative;
   width: 220px;
+  min-width: 220px;
 
   &.disabled {
     > * {
