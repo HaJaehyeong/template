@@ -10,6 +10,7 @@ import UiRating from '@/ui/rating/rating';
 import UiSelect from '@/ui/select/select';
 import UiSlider from '@/ui/slider/slider';
 import UiSwitch from '@/ui/switch/switch';
+import UiTextField from '@/ui/text-field/text-field';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
 import UiTransferList from '@/ui/transfer-list/transfer-list';
@@ -743,6 +744,32 @@ const Home: React.FC = () => {
           <UiMenuItem value={2}>second menu item</UiMenuItem>
           <UiMenuItem value={3}>third menu item</UiMenuItem>
         </UiSelect>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+        <UiTextField id="hello" label="Label" />
+        <UiTextField id="hello" label="Label" helperText="ID를 입력해주세요" />
+        <UiTextField id="world" label="Label" variant="outline" />
+        <UiTextField id="world" label="Label" variant="outline" helperText="ID를 입력해주세요" />
+        <UiTextField id="world" label="Label" variant="filed" />
+        <UiTextField id="world" label="Label" variant="filed" helperText="ID를 입력해주세요" />
+        <UiTextField id="world" label="Label" variant="filed" helperText="ID를 입력해주세요" isError />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+        <UiTextField id="hello" label="Label" fieldSize="s" />
+        <UiTextField id="hello" label="Label" fieldSize="s" helperText="ID를 입력해주세요" />
+        <UiTextField id="world" label="Label" variant="outline" fieldSize="s" />
+        <UiTextField id="world" label="Label" variant="outline" fieldSize="s" helperText="ID를 입력해주세요" />
+        <UiTextField id="world" label="Label" variant="filed" fieldSize="s" />
+        <UiTextField id="world" label="Label" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+        <UiTextField id="hello" label="Label" disabled />
+        <UiTextField id="hello" label="Label" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+        <UiTextField id="world" label="Label" variant="outline" disabled />
+        <UiTextField id="world" label="Label" variant="outline" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+        <UiTextField id="world" label="Label" variant="filed" disabled />
+        <UiTextField id="world" label="Label" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" disabled />
       </div>
     </div>
   );

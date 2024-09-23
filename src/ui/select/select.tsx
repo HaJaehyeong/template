@@ -9,7 +9,7 @@ type Item = { label: string; value: string | number };
 
 type UiSelectProps = {
   label: string;
-  variant?: 'standard' | 'outline' | 'filed';
+  variant?: 'standard' | 'outline' | 'filed'; // NOTE(hajae): Style Guide에 filed라고 적혀있어서 filed로 설정했는데 field가 아닐까..
   size?: 's' | 'm';
   isError?: boolean;
   disabled?: boolean;
