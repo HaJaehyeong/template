@@ -764,12 +764,26 @@ const Home: React.FC = () => {
         <UiTextField id="world" label="Label" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
-        <UiTextField id="hello" label="Label" disabled />
-        <UiTextField id="hello" label="Label" fieldSize="s" helperText="ID를 입력해주세요" disabled />
-        <UiTextField id="world" label="Label" variant="outline" disabled />
-        <UiTextField id="world" label="Label" variant="outline" fieldSize="s" helperText="ID를 입력해주세요" disabled />
-        <UiTextField id="world" label="Label" variant="filed" disabled />
-        <UiTextField id="world" label="Label" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+        <UiTextField id="hello" label="Disabled" disabled />
+        <UiTextField id="hello" label="Disabled" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+        <UiTextField id="world" label="Disabled" variant="outline" disabled />
+        <UiTextField
+          id="world"
+          label="Disabled"
+          variant="outline"
+          fieldSize="s"
+          helperText="ID를 입력해주세요"
+          disabled
+        />
+        <UiTextField id="world" label="Disabled" variant="filed" disabled />
+        <UiTextField
+          id="world"
+          label="Disabled"
+          variant="filed"
+          fieldSize="s"
+          helperText="ID를 입력해주세요"
+          disabled
+        />
       </div>
     </div>
   );
