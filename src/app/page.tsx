@@ -4,6 +4,7 @@ import UiButtonGroup from '@/ui/button-group/button-group';
 import UiButton from '@/ui/button/button';
 import UiCheckBox from '@/ui/checkbox/checkbox';
 import UiListItem from '@/ui/list-item/list-item';
+import UiListSubheader from '@/ui/list-subheader/list-subheader';
 import UiMenuItem from '@/ui/menu-item/menu-item';
 import UiRadioGroup from '@/ui/radio-group/radio-group';
 import UiRadio from '@/ui/radio/radio';
@@ -15,7 +16,15 @@ import UiTextField from '@/ui/text-field/text-field';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
 import UiTransferList from '@/ui/transfer-list/transfer-list';
-import { RiChat4Line, RiEyeLine, RiEyeOffLine, RiHeartFill, RiHeartLine, RiMailLine } from '@remixicon/react';
+import {
+  RiChat4Line,
+  RiEyeLine,
+  RiEyeOffLine,
+  RiHeartFill,
+  RiHeartLine,
+  RiMailLine,
+  RiUserLine,
+} from '@remixicon/react';
 import { useState } from 'react';
 import styles from './page.module.scss';
 
@@ -805,8 +814,10 @@ const Home: React.FC = () => {
       <div
         style={{ display: 'flex', flexDirection: 'column', border: 'solid 1px var(--secondary-main)', width: '400px' }}
       >
+        <UiListSubheader title="APPS & PAGES" />
         <UiListItem icon={RiMailLine} name="Email" />
         <UiListItem icon={RiChat4Line} name="Chat" />
+        <UiListItem icon={RiUserLine} name="User" arrow />
       </div>
     </div>
   );
