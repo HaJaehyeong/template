@@ -1,0 +1,20 @@
+.list-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0 12px 2px;
+  padding: 8px 12px 8px 16px;
+  width: calc(100% - 52px);
+  height: 26px;
+
+  border-radius: 8px;
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--action-hover);
+  }
+}

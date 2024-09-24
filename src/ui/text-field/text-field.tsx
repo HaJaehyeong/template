@@ -12,8 +12,8 @@ type UiTextFieldProps = {
   isError?: boolean;
   disabled?: boolean;
   defaultValue?: string;
-  fieldPrefix?: React.ReactNode | RemixiconComponentType | string;
-  fieldSuffix?: React.ReactNode | RemixiconComponentType | string;
+  fieldPrefix?: React.ReactNode | string;
+  fieldSuffix?: React.ReactNode | string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const UiTextField: React.FC<UiTextFieldProps> = ({
