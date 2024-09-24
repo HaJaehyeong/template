@@ -14,16 +14,18 @@ import UiTextField from '@/ui/text-field/text-field';
 import UiToggleButtonGroup from '@/ui/toggle-button-group/toggle-button-group';
 import UiToggleButton from '@/ui/toggle-button/toggle-button';
 import UiTransferList from '@/ui/transfer-list/transfer-list';
-import { RiHeartFill, RiHeartLine } from '@remixicon/react';
+import { RiEyeLine, RiEyeOffLine, RiHeartFill, RiHeartLine } from '@remixicon/react';
 import { useState } from 'react';
 import styles from './page.module.scss';
 
 const Home: React.FC = () => {
   const [selectedRadioValue, setSelectedRadioValue] = useState('a');
-
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedRadioValue(event.target.value);
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handlePasswordToggle = () => setShowPassword(!showPassword);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -747,42 +749,56 @@ const Home: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
-        <UiTextField id="hello" label="Label" />
-        <UiTextField id="hello" label="Label" helperText="ID를 입력해주세요" />
-        <UiTextField id="world" label="Label" variant="outline" />
-        <UiTextField id="world" label="Label" variant="outline" helperText="ID를 입력해주세요" />
-        <UiTextField id="world" label="Label" variant="filed" />
-        <UiTextField id="world" label="Label" variant="filed" helperText="ID를 입력해주세요" />
-        <UiTextField id="world" label="Label" variant="filed" helperText="ID를 입력해주세요" isError />
+        <UiTextField label="Label" />
+        <UiTextField label="Label" helperText="ID를 입력해주세요" defaultValue={'hello'} />
+        <UiTextField label="Label" variant="outline" />
+        <UiTextField label="Label" variant="outline" helperText="ID를 입력해주세요" />
+        <UiTextField label="Label" variant="filed" />
+        <UiTextField label="Label" variant="filed" helperText="ID를 입력해주세요" />
+        <UiTextField label="Label" variant="filed" helperText="ID를 입력해주세요" isError />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
-        <UiTextField id="hello" label="Label" fieldSize="s" />
-        <UiTextField id="hello" label="Label" fieldSize="s" helperText="ID를 입력해주세요" />
-        <UiTextField id="world" label="Label" variant="outline" fieldSize="s" />
-        <UiTextField id="world" label="Label" variant="outline" fieldSize="s" helperText="ID를 입력해주세요" />
-        <UiTextField id="world" label="Label" variant="filed" fieldSize="s" />
-        <UiTextField id="world" label="Label" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" />
+        <UiTextField label="Label" fieldSize="s" />
+        <UiTextField label="Label" fieldSize="s" helperText="ID를 입력해주세요" />
+        <UiTextField label="Label" variant="outline" fieldSize="s" />
+        <UiTextField label="Label" variant="outline" fieldSize="s" helperText="ID를 입력해주세요" />
+        <UiTextField label="Label" variant="filed" fieldSize="s" />
+        <UiTextField label="Label" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
-        <UiTextField id="hello" label="Disabled" disabled />
-        <UiTextField id="hello" label="Disabled" fieldSize="s" helperText="ID를 입력해주세요" disabled />
-        <UiTextField id="world" label="Disabled" variant="outline" disabled />
+        <UiTextField label="Disabled" disabled />
+        <UiTextField label="Disabled" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+        <UiTextField label="Disabled" variant="outline" disabled />
+        <UiTextField label="Disabled" variant="outline" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+        <UiTextField label="Disabled" variant="filed" disabled />
+        <UiTextField label="Disabled" variant="filed" fieldSize="s" helperText="ID를 입력해주세요" disabled />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+        <UiTextField label="Prefix" type="text" fieldPrefix={'Kg'} />
+        <UiTextField label="내 몸무게" type="text" fieldPrefix={'Kg'} fieldSize="s" width={100} defaultValue="71" />
+        <UiTextField label="Suffix" type="text" fieldSuffix={'Kg'} />
+        <UiTextField label="내 몸무게" type="text" fieldSuffix={'Kg'} fieldSize="s" width={100} defaultValue="71" />
         <UiTextField
-          id="world"
-          label="Disabled"
-          variant="outline"
-          fieldSize="s"
-          helperText="ID를 입력해주세요"
-          disabled
+          label="Password"
+          type={showPassword ? 'text' : 'password'}
+          fieldPrefix={
+            showPassword ? (
+              <RiEyeOffLine size={20} style={{ cursor: 'pointer' }} onClick={handlePasswordToggle} />
+            ) : (
+              <RiEyeLine size={20} style={{ cursor: 'pointer' }} onClick={handlePasswordToggle} />
+            )
+          }
         />
-        <UiTextField id="world" label="Disabled" variant="filed" disabled />
         <UiTextField
-          id="world"
-          label="Disabled"
-          variant="filed"
-          fieldSize="s"
-          helperText="ID를 입력해주세요"
-          disabled
+          label="Password"
+          type={showPassword ? 'text' : 'password'}
+          fieldSuffix={
+            showPassword ? (
+              <RiEyeOffLine size={20} style={{ cursor: 'pointer' }} onClick={handlePasswordToggle} />
+            ) : (
+              <RiEyeLine size={20} style={{ cursor: 'pointer' }} onClick={handlePasswordToggle} />
+            )
+          }
         />
       </div>
     </div>
