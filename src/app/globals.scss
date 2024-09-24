@@ -15,6 +15,10 @@ button {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 div {
   user-select: none;
   -webkit-user-select: none;
@@ -24,8 +28,7 @@ div {
 }
 
 body {
-  margin: 20px;
-
+  margin: 0;
   background-color: var(--other-body-background);
   transition: background-color 0.3s ease;
 

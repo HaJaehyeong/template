@@ -18,6 +18,14 @@
   &:hover {
     background-color: var(--action-hover);
   }
+
+  &.active {
+    background-color: var(--primary-main);
+
+    &:hover {
+      background-color: var(--primary-contained-hover-background);
+    }
+  }
 }
 
 .arrow {
