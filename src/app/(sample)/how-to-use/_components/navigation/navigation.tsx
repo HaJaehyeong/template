@@ -16,8 +16,16 @@ const Navigation: React.FC = () => {
         <RiEmojiStickerFill size={24} />
         <span>Template</span>
       </div>
+
       <UiListSubheader title="APPS & PAGES" />
-      <UiListItem icon={NAVIGATION_MAIN.icon} name={NAVIGATION_MAIN.name} active={NAVIGATION_MAIN.path === pathName} />
+
+      <Link href={NAVIGATION_MAIN.path}>
+        <UiListItem
+          icon={NAVIGATION_MAIN.icon}
+          name={NAVIGATION_MAIN.name}
+          active={NAVIGATION_MAIN.path === pathName}
+        />
+      </Link>
       <UiListSubheader title="UI Components" />
       {NAVIGATION_LIST.map((item, index) => (
         <Link href={item.path} key={item.name + index}>

@@ -21,6 +21,7 @@
 
   &.active {
     background-color: var(--primary-main);
+    color: var(--primary-contrast);
 
     &:hover {
       background-color: var(--primary-contained-hover-background);
