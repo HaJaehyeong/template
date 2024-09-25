@@ -1,8 +1,5 @@
-import { Inter } from 'next/font/google';
 import '../../globals.scss';
 import Navigation from './_components/navigation/navigation';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function HowToUseLayout({
   children,
@@ -10,9 +7,9 @@ export default function HowToUseLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="ui-component">
       <Navigation />
       {children}
-    </>
+    </div>
   );
 }
