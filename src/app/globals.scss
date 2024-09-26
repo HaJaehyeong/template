@@ -42,5 +42,11 @@ body {
 
 .ui-component-page-wrapper {
   padding: 20px;
-  width: calc(100dvw - 310px); // NOTE(hajae): 100dvw - (navigation 270px + padding 40px)
+  width: calc(45% - 310px);
+  min-width: 800px;
+}
+
+.example-wrapper {
+  padding: 20px 20px 20px 0;
+  width: calc(55% - 20px);
 }
