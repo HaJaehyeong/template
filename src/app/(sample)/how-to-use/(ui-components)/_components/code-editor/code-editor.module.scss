@@ -1,0 +1,16 @@
+.editor-wrapper {
+  position: relative;
+}
+
+.editor {
+  margin: 20px 40px;
+  background-color: hsl(210, 25%, 9%);
+  border-radius: 16px;
+  font-size: 18px;
+}
+
+.textarea {
+  outline-width: 3px;
+  outline-color: var(--action-active);
+  border-radius: 16px;
+}
