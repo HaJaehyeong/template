@@ -1,0 +1,54 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 3px;
+  border-style: hidden;
+
+  > thead {
+    height: 54px;
+    background-color: var(--other-body-background);
+    border: 0;
+
+    > tr > td {
+      padding: 0 10px;
+
+      &:first-child {
+        padding-left: 20px;
+      }
+      &:last-child {
+        padding-right: 20px;
+      }
+    }
+
+    > tr > td > span {
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+      border-right: solid 2px var(--other-divider);
+      font-weight: 500;
+    }
+  }
+
+  > tbody {
+    > tr {
+      height: 50px;
+      box-shadow: 0 -1px 0 0 var(--box-inner-shadow) inset;
+
+      &:hover td {
+        background-color: var(--action-hover);
+      }
+    }
+
+    > tr > td {
+      padding: 0 10px;
+
+      &:first-child {
+        padding-left: 20px;
+      }
+      &:last-child {
+        padding-right: 20px;
+      }
+    }
+  }
+}
