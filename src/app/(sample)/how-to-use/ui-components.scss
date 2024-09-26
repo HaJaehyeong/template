@@ -24,6 +24,8 @@
     width: calc(40% - 60px);
     min-width: 740px;
 
+    z-index: 2;
+
     hr {
       margin: 50px 0 0 -30px;
       width: calc(100% + 60px);
@@ -33,6 +35,22 @@
     h5 {
       margin-bottom: 30px;
     }
+
+    > .example-button {
+      position: absolute;
+      display: flex;
+      align-items: center;
+
+      right: 30px;
+
+      font-size: 18px;
+      color: var(--primary-alternative-light);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary-alternative-dark);
+      }
+    }
   }
 
   > .example-wrapper {
@@ -40,7 +58,26 @@
     padding: 20px 30px;
     width: calc(60% - 80px);
     min-width: 730px;
-
     height: fit-content;
+
+    animation: slideToRight 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: 1;
+  }
+
+  @keyframes slideToRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-800px);
+    }
+    70% {
+      opacity: 1;
+      transform: translateX(20px);
+    }
+    90% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 }

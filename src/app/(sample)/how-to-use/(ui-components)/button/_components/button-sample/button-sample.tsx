@@ -1,4 +1,5 @@
 import UiButton from '@/ui/button/button';
+import { memo } from 'react';
 import styles from './button-sample.module.scss';
 
 const ButtonSample: React.FC = () => {
@@ -287,4 +288,5 @@ const ButtonSample: React.FC = () => {
   );
 };
 
-export default ButtonSample;
+// NOTE(hajae): Example Button을 눌렀을 경우 부모 컴포넌트의 상태변화로 인해 해당 컴포넌트도 리렌더링 되므로 이를 막기위해 memo 사용
+export default memo(ButtonSample);
