@@ -14,11 +14,13 @@ const UiComponentsWrapper: React.FC<UiComponentsWrapperProps> = ({ children, exa
 
   return (
     <div className="ui-component-page-wrapper">
-      <div className="sample-wrapper paper elevated square-false">
-        <div className="example-button" onClick={handleExampleToggle}>
-          Example <RiArrowRightDoubleLine />
+      <div className="sample-wrapper">
+        <div className="sample paper elevated square-false">
+          <div className="example-button" onClick={handleExampleToggle}>
+            Example <RiArrowRightDoubleLine />
+          </div>
+          {children}
         </div>
-        {children}
       </div>
       <ExampleWrapper open={isExampleOpen}>{exampleChildren}</ExampleWrapper>
     </div>
