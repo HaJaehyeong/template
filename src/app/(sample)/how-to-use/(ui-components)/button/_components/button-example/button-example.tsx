@@ -1,3 +1,5 @@
+import UiButton from '@/ui/button/button';
+import CodeEditor from '../../../_components/code-editor/code-editor';
 import PropsTable from '../../../_components/props-table/props-table';
 import styles from './button-example.module.scss';
 
@@ -85,6 +87,35 @@ const ButtonProps = [
 const ButtonExample: React.FC = () => {
   return (
     <div className={styles.exampleWrapper}>
+      <h4>Example</h4>
+
+      <h5>Variant</h5>
+      <CodeEditor
+        code={`<UiButton value="Button" />\n<UiButton value="Outlined" variant="outlined" />\n<UiButton value="Text" variant="text" />`}
+      />
+      <div className={styles.resultsWrapper}>
+        <div className={styles.results}>
+          <UiButton value="Contained" />
+          <UiButton value="Outlined" variant="outlined" />
+          <UiButton value="Text" variant="text" />
+        </div>
+      </div>
+
+      <h5>Color</h5>
+      <CodeEditor
+        code={`<UiButton value="Primary" />\n<UiButton value="Secondary" color="secondary" />\n<UiButton value="Error" variant="outlined" color="error" />\n<UiButton value="Warning" variant="outlined" color="warning" />\n<UiButton value="Info" variant="text" color="info" />\n<UiButton value="Success" variant="text" color="success" />`}
+      />
+      <div className={styles.resultsWrapper}>
+        <div className={styles.results}>
+          <UiButton value="Primary" />
+          <UiButton value="Secondary" color="secondary" />
+          <UiButton value="Error" variant="outlined" color="error" />
+          <UiButton value="Warning" variant="outlined" color="warning" />
+          <UiButton value="Info" variant="text" color="info" />
+          <UiButton value="Success" variant="text" color="success" />
+        </div>
+      </div>
+
       <h4>Props</h4>
       <PropsTable datas={ButtonProps} />
     </div>

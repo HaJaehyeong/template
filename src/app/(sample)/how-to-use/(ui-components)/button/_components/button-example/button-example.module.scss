@@ -1,0 +1,19 @@
+.results-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  margin: 20px 40px;
+  width: calc(100% - 80px);
+
+  font-size: 20px;
+
+  > .results {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+}
