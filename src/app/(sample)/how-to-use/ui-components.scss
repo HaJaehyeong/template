@@ -77,6 +77,18 @@
       width: calc(100% + 60px);
       border-color: var(--other-divider);
     }
+
+    .example-result-row {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    .example-result-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 
   .example {

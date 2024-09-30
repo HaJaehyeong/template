@@ -1,9 +1,8 @@
 'use client';
 import UiButtonGroup from '@/ui/button-group/button-group';
 import UiButton from '@/ui/button/button';
-import CodeEditor from '../../../_components/code-editor/code-editor';
+import ExampleContent from '../../../_components/example-content/example-content';
 import PropsTable from '../../../_components/props-table/props-table';
-import styles from './button-group-example.module.scss';
 
 const ButtonGroupProps = [
   {
@@ -51,131 +50,130 @@ const comment = `
 
 const ButtonGroupExample: React.FC = () => {
   return (
-    <div className={styles.exampleWrapper}>
+    <>
       <h4>Example</h4>
 
-      <h5>Type</h5>
-      <CodeEditor
+      <ExampleContent
+        title="Type"
         code={`<UiButtonGroup type="horizontal">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup type="vertical">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>`}
+        result={
+          <>
+            <UiButtonGroup type="horizontal">
+              <UiButton value="Button" />
+              <UiButton value="Group" />
+            </UiButtonGroup>
+
+            <UiButtonGroup type="vertical">
+              <UiButton value="Button" />
+              <UiButton value="Group" />
+            </UiButtonGroup>
+          </>
+        }
       />
-      <div className={styles.resultsWrapper}>
-        <div className={styles.results}>
-          <UiButtonGroup type="horizontal">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
 
-          <UiButtonGroup type="vertical">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-        </div>
-      </div>
-
-      <h5>Variant</h5>
-      <CodeEditor
+      <ExampleContent
+        title="Variant"
         code={`<UiButtonGroup>\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n\t<UiButton value="Example" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="outlined">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n\t<UiButton value="Example" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="text">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n\t<UiButton value="Example" />\n</UiButtonGroup>`}
-      />
-      <div className={styles.resultsWrapper}>
-        <div className={styles.results}>
-          <span>1.</span>
-          <UiButtonGroup>
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-            <UiButton value="Example" />
-          </UiButtonGroup>
-        </div>
-        <div className={styles.results}>
-          <span>2.</span>
-          <UiButtonGroup variant="outlined">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-            <UiButton value="Example" />
-          </UiButtonGroup>
-        </div>
-        <div className={styles.results}>
-          <span>3.</span>
-          <UiButtonGroup variant="text">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-            <UiButton value="Example" />
-          </UiButtonGroup>
-        </div>
-      </div>
+        result={
+          <div className="example-result-column">
+            <UiButtonGroup>
+              <UiButton value="Button" />
+              <UiButton value="Group" />
+              <UiButton value="Example" />
+            </UiButtonGroup>
 
-      <h5>Color</h5>
-      <CodeEditor
+            <UiButtonGroup variant="outlined">
+              <UiButton value="Button" />
+              <UiButton value="Group" />
+              <UiButton value="Example" />
+            </UiButtonGroup>
+
+            <UiButtonGroup variant="text">
+              <UiButton value="Button" />
+              <UiButton value="Group" />
+              <UiButton value="Example" />
+            </UiButtonGroup>
+          </div>
+        }
+      />
+
+      <ExampleContent
+        title="Color"
         code={`<UiButtonGroup>\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup color="secondary">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="outlined" color="info">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="outlined" color="success">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="text" color="warning">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="text" color="error">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>`}
+        result={
+          <div className="example-result-column">
+            <div className="example-result-row">
+              <UiButtonGroup>
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+              <UiButtonGroup color="secondary">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+              <UiButtonGroup variant="outlined" color="info">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+            </div>
+            <div className="example-result-row">
+              <UiButtonGroup variant="outlined" color="success">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+              <UiButtonGroup variant="text" color="warning">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+              <UiButtonGroup variant="text" color="error">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+            </div>
+          </div>
+        }
       />
-      <div className={styles.resultsWrapper}>
-        <div className={styles.results}>
-          <UiButtonGroup>
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-          <UiButtonGroup color="secondary">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-          <UiButtonGroup variant="outlined" color="info">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-        </div>
-        <div className={styles.results}>
-          <UiButtonGroup variant="outlined" color="success">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-          <UiButtonGroup variant="text" color="warning">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-          <UiButtonGroup variant="text" color="error">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-        </div>
-      </div>
 
-      <h5>Size</h5>
-      <CodeEditor
+      <ExampleContent
+        title="Size"
         code={`<UiButtonGroup size="s">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="outlined" size="s">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="text" size="s">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup size="l">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="outlined" size="l">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>\n\n<UiButtonGroup variant="text" size="l">\n\t<UiButton value="Button" />\n\t<UiButton value="Group" />\n</UiButtonGroup>`}
+        result={
+          <div className="example-result-column">
+            <div className="example-result-row">
+              <UiButtonGroup size="s">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+
+              <UiButtonGroup variant="outlined" size="s">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+
+              <UiButtonGroup variant="text" size="s">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+            </div>
+            <div className="example-result-row">
+              <UiButtonGroup size="l">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+
+              <UiButtonGroup variant="outlined" size="l">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+
+              <UiButtonGroup variant="text" size="l">
+                <UiButton value="Button" />
+                <UiButton value="Group" />
+              </UiButtonGroup>
+            </div>
+          </div>
+        }
       />
-      <div className={styles.resultsWrapper}>
-        <div className={styles.results}>
-          <UiButtonGroup size="s">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-
-          <UiButtonGroup variant="outlined" size="s">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-
-          <UiButtonGroup variant="text" size="s">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-        </div>
-        <div className={styles.results}>
-          <UiButtonGroup size="l">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-
-          <UiButtonGroup variant="outlined" size="l">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-
-          <UiButtonGroup variant="text" size="l">
-            <UiButton value="Button" />
-            <UiButton value="Group" />
-          </UiButtonGroup>
-        </div>
-      </div>
 
       <h4>Props</h4>
       <PropsTable datas={ButtonGroupProps} />
@@ -188,7 +186,7 @@ const ButtonGroupExample: React.FC = () => {
       <hr />
       <h4>Comment</h4>
       <pre>{comment}</pre>
-    </div>
+    </>
   );
 };
 
