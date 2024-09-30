@@ -71,6 +71,12 @@
     min-width: 790px;
 
     overflow-y: scroll;
+
+    hr {
+      margin: 50px 0 0 -30px;
+      width: calc(100% + 60px);
+      border-color: var(--other-divider);
+    }
   }
 
   .example {

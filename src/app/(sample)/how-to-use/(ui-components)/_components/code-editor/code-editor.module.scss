@@ -1,12 +1,16 @@
 .editor-wrapper {
   position: relative;
-  max-width: 800px;
+  width: 90%;
+  min-width: 800px;
+  max-width: 1200px;
 }
 
 .editor {
   margin: 20px 40px;
-  background-color: hsl(210, 25%, 9%);
+  background-color: var(--code-editor-bg);
   border-radius: 16px;
+
+  color: var(--code-editor-default-color);
   font-size: 18px;
 }
 

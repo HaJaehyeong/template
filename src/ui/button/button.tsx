@@ -1,3 +1,4 @@
+'use client';
 import { ButtonColor, ButtonSize, ButtonVariant } from '@/types/types';
 import { RiAddLine, RiArrowLeftLine, RiArrowRightLine, RiStarFill } from '@remixicon/react';
 import styles from './button.module.scss';
