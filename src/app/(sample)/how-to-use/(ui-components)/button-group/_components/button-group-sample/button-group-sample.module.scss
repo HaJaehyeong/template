@@ -1,0 +1,28 @@
+.type,
+.variant,
+.color,
+.size,
+.state {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.color,
+.size {
+  margin-top: 20px;
+  gap: 32px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  > label {
+    color: var(--text-disabled);
+    font-size: 14px;
+  }
+}
