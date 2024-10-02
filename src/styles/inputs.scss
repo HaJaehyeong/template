@@ -104,6 +104,9 @@ input[type="checkbox"]:disabled:checked::before {
   background-color: var(--action-disabled) !important;
   border-color: var(--action-disabled) !important;
 }
+input[type="checkbox"]:disabled:checked::after {
+  border-color: var(--action-disabled);
+}
 input[type="checkbox"]:indeterminate::after {
   content: "";
   position: absolute;
