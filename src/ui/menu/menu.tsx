@@ -1,4 +1,14 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  ReactElement,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import UiMenuItem, { UiMenuItemProps } from '../menu-item/menu-item';
 import styles from './menu.module.scss';
 
 type UiMenuProps = {
@@ -49,6 +59,14 @@ const UiMenu: React.FC<UiMenuProps> = ({ isOpen, onClose, children }) => {
     }
   }, [isOpen, onClose]);
 
+  const addOnCloseEventInChildrens = () => {
+    return Children.map(children, (child) =>
+      isValidElement(child) && child.type === UiMenuItem
+        ? cloneElement(child as ReactElement<UiMenuItemProps>, { onClose })
+        : child
+    );
+  };
+
   return isOpen ? (
     <>
       <div className={styles.menuBackground} onClick={onClose} />
@@ -58,7 +76,7 @@ const UiMenu: React.FC<UiMenuProps> = ({ isOpen, onClose, children }) => {
           isOpen ? styles.open : ''
         } popover square-false shadow8`}
       >
-        {children}
+        {addOnCloseEventInChildrens()}
       </div>
     </>
   ) : null;
