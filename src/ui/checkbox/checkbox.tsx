@@ -36,8 +36,8 @@ const UiCheckBox: React.FC<UiCheckBoxProps> = ({
   }, [check]);
 
   const handleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
-    setCheck(event.target.checked);
     if (onChange) onChange(event);
+    else setCheck(event.target.checked);
   };
 
   useEffect(() => {
