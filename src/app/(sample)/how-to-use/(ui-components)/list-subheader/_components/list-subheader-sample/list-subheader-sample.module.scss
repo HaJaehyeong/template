@@ -1,14 +1,7 @@
-.variant,
-.color,
-.size,
-.state {
+.samples {
   display: flex;
   flex-direction: row;
   gap: 16px;
-}
-
-.color {
-  gap: 32px;
 }
 
 .item {

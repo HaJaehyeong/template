@@ -1,4 +1,4 @@
-import UiButton from '@/ui/button/button';
+import UiListSubheader from '@/ui/list-subheader/list-subheader';
 import { memo } from 'react';
 import styles from './list-subheader-sample.module.scss';
 
@@ -6,12 +6,13 @@ const ListSubheaderSample: React.FC = () => {
   return (
     <>
       <div>
-        <h4>Variant</h4>
-        <h5>Contained (Default)</h5>
-        <div className={styles.variant}>
+        <h4>Samples</h4>
+        <div className={styles.samples}>
           <div className={styles.item}>
-            <UiButton value="Button" />
-            <label>Default</label>
+            <UiListSubheader title="Sample & Exmaple" />
+            <UiListSubheader title="APP & PAGES" />
+            <UiListSubheader title="Ui List Sub Header" />
+            <UiListSubheader title="Hello World!" />
           </div>
         </div>
       </div>
