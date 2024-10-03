@@ -1,10 +1,9 @@
-.variant,
-.color,
-.size,
-.state {
+.samples {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  flex-direction: column;
+  gap: 40px;
+
+  width: 300px;
 }
 
 .color {
