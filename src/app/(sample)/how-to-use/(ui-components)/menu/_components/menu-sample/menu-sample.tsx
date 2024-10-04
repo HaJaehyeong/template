@@ -1,17 +1,27 @@
+'use client';
 import UiButton from '@/ui/button/button';
-import { memo } from 'react';
+import UiMenuItem from '@/ui/menu-item/menu-item';
+import UiMenu from '@/ui/menu/menu';
+import { memo, useState } from 'react';
 import styles from './menu-sample.module.scss';
 
 const MenuSample: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <div>
-        <h4>Variant</h4>
-        <h5>Contained (Default)</h5>
-        <div className={styles.variant}>
+        <h4>Samples</h4>
+        <h5>with UiButton</h5>
+        <div className={styles.samples}>
           <div className={styles.item}>
-            <UiButton value="Button" />
-            <label>Default</label>
+            <div className={styles.menuWrapper}>
+              <UiButton value={isOpen ? 'Opend' : 'Closed'} onClick={() => setIsOpen(true)} />
+              <UiMenu isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                <UiMenuItem>First Item</UiMenuItem>
+                <UiMenuItem>Second Item</UiMenuItem>
+              </UiMenu>
+            </div>
           </div>
         </div>
       </div>
