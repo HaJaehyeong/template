@@ -1,18 +1,30 @@
-import UiButton from '@/ui/button/button';
+import UiMenuItem from '@/ui/menu-item/menu-item';
 import { memo } from 'react';
-import styles from './menu-item-sample.module.scss';
 
 const MenuItemSample: React.FC = () => {
   return (
     <>
       <div>
-        <h4>Variant</h4>
-        <h5>Contained (Default)</h5>
-        <div className={styles.variant}>
-          <div className={styles.item}>
-            <UiButton value="Button" />
-            <label>Default</label>
-          </div>
+        <h4>Samples</h4>
+        <h5>width 300px</h5>
+        <div style={{ width: '300px' }}>
+          <UiMenuItem>Menu Item</UiMenuItem>
+          <UiMenuItem>Sample</UiMenuItem>
+          <UiMenuItem>Hello world</UiMenuItem>
+        </div>
+
+        <h5>width 200px</h5>
+        <div style={{ width: '200px' }}>
+          <UiMenuItem>Menu Item</UiMenuItem>
+          <UiMenuItem>Sample</UiMenuItem>
+          <UiMenuItem>Hello world</UiMenuItem>
+        </div>
+
+        <h5>Disabled</h5>
+        <div style={{ width: '200px' }}>
+          <UiMenuItem disabled>Disabled</UiMenuItem>
+          <UiMenuItem>Enabled</UiMenuItem>
+          <UiMenuItem disabled>Disabled</UiMenuItem>
         </div>
       </div>
     </>
