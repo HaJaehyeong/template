@@ -1,3 +1,4 @@
+'use client';
 import { ButtonColor, ButtonSize } from '@/types/types';
 import { ChangeEvent } from 'react';
 import styles from './radio.module.scss';
