@@ -9,7 +9,7 @@ type UiRatingProps = {
   color?: string;
   size?: ButtonSize;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (rating: number) => void;
 } & ({ emptyIcon: RemixiconComponentType; fillIcon: RemixiconComponentType } | { emptyIcon?: never; fillIcon?: never });
 
 const UiRating: React.FC<UiRatingProps> = ({
@@ -42,10 +42,11 @@ const UiRating: React.FC<UiRatingProps> = ({
   const handleClick = (index: number) => {
     if (disabled) return;
 
+    const newRating = (index + 1) * 20;
     if (onClick) {
-      onClick();
+      onClick(newRating);
     }
-    setClickedRating((index + 1) * 20);
+    setClickedRating(newRating);
   };
 
   return (
