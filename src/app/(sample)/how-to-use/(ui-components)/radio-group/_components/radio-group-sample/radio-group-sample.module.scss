@@ -1,7 +1,8 @@
-.variant,
-.color,
-.size,
-.state {
+.item-wrapper {
+  display: flex;
+}
+
+.radio-group {
   display: flex;
   flex-direction: row;
   gap: 16px;

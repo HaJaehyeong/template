@@ -1,17 +1,38 @@
-import UiButton from '@/ui/button/button';
-import { memo } from 'react';
+'use client';
+import UiRadioGroup from '@/ui/radio-group/radio-group';
+import UiRadio from '@/ui/radio/radio';
+import { memo, useState } from 'react';
 import styles from './radio-group-sample.module.scss';
 
 const RadioGroupSample: React.FC = () => {
+  const [checkedChild, setCheckedChild] = useState('1');
   return (
     <>
       <div>
-        <h4>Variant</h4>
-        <h5>Contained (Default)</h5>
-        <div className={styles.variant}>
+        <h4>Radio Group</h4>
+        <div className={styles.itemWrapper}>
           <div className={styles.item}>
-            <UiButton value="Button" />
-            <label>Default</label>
+            <UiRadioGroup name="group" className={styles.radioGroup}>
+              <UiRadio
+                label="child1"
+                value="1"
+                checked={checkedChild === '1'}
+                onChange={(e) => setCheckedChild(e.target.value)}
+              />
+              <UiRadio
+                label="child2"
+                value="2"
+                checked={checkedChild === '2'}
+                onChange={(e) => setCheckedChild(e.target.value)}
+              />
+              <UiRadio
+                label="child3"
+                value="3"
+                checked={checkedChild === '3'}
+                onChange={(e) => setCheckedChild(e.target.value)}
+              />
+            </UiRadioGroup>
+            <label>Group</label>
           </div>
         </div>
       </div>
