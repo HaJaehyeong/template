@@ -1,3 +1,4 @@
+'use client';
 import { ButtonColor } from '@/types/types';
 import { useEffect, useRef, useState } from 'react';
 import styles from './slider.module.scss';
@@ -14,7 +15,7 @@ type UiSliderProps = {
   disabled?: boolean;
   valueTooltipDisplay?: boolean;
   valueLabelDisplay?: boolean;
-  onChange: (newValue: { min: number; max: number }) => void;
+  onChange?: (newValue: { min: number; max: number }) => void;
 };
 
 const UiSlider: React.FC<UiSliderProps> = ({
@@ -71,13 +72,13 @@ const UiSlider: React.FC<UiSliderProps> = ({
   const handleLeftChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Math.min(+event.target.value, rightValue - (variant === 'range' ? minGap : 0));
     setLeftValue(newValue);
-    onChange({ min: newValue, max: rightValue });
+    if (onChange) onChange({ min: newValue, max: rightValue });
   };
 
   const handleRightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Math.max(+event.target.value, leftValue + (variant === 'range' ? minGap : 0));
     setRightValue(newValue);
-    onChange({ min: leftValue, max: newValue });
+    if (onChange) onChange({ min: leftValue, max: newValue });
   };
 
   const generateMarks = () => {
