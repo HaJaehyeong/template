@@ -801,6 +801,46 @@ const Home: React.FC = () => {
           }
         />
       </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiSlider value={50} size="s" onChange={() => {}} />
+        <UiSlider variant="discrete" value={50} size="s" onChange={() => {}} />
+        <UiSlider variant="range" value={{ min: 20, max: 80 }} size="s" onChange={() => {}} />
+        <UiSlider variant="range" value={{ min: 20, max: 80 }} color="error" size="s" onChange={() => {}} />
+        <UiSlider variant="discrete" value={60} step={20} size="s" onChange={() => {}} />
+        <UiSlider
+          variant="discrete"
+          min={0}
+          max={20}
+          step={3}
+          value={8}
+          valueLabelDisplay
+          valueTooltipDisplay
+          size="s"
+          onChange={() => {}}
+        />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <UiSwitch />
+        <UiSwitch checked />
+        <UiSwitch label="hello" />
+        <UiSwitch color="secondary" />
+        <UiSwitch color="info" />
+        <UiSwitch color="success" />
+        <UiSwitch color="warning" />
+        <UiSwitch color="error" />
+        <UiSwitch color="inactive" />
+        <UiSwitch color="primary" size="s" />
+        <UiSwitch color="secondary" size="s" />
+        <UiSwitch color="info" size="s" />
+        <UiSwitch color="primary" size="s" label="label" />
+        <UiSwitch color="secondary" size="s" label="label" />
+        <UiSwitch color="info" size="s" label="label" />
+        <UiSwitch color="inactive" size="s" label="label" />
+        <UiSwitch color="inactive" disabled label="label" />
+        <UiSwitch disabled label="label" checked />
+        <UiSwitch disabled size="s" label="label" />
+      </div>
     </div>
   );
 };

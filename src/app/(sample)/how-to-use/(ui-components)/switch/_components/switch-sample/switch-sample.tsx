@@ -1,4 +1,5 @@
-import UiButton from '@/ui/button/button';
+'use client';
+import UiSwitch from '@/ui/switch/switch';
 import { memo } from 'react';
 import styles from './switch-sample.module.scss';
 
@@ -6,12 +7,82 @@ const SwitchSample: React.FC = () => {
   return (
     <>
       <div>
-        <h4>Variant</h4>
-        <h5>Contained (Default)</h5>
+        <h4>Colors</h4>
         <div className={styles.variant}>
           <div className={styles.item}>
-            <UiButton value="Button" />
+            <UiSwitch />
             <label>Default</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch color="secondary" />
+            <label>Secondary</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch color="info" />
+            <label>Info</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch color="success" />
+            <label>Success</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch color="warning" />
+            <label>Warning</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch color="error" />
+            <label>Error</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch color="inactive" />
+            <label>Inactive</label>
+          </div>
+        </div>
+
+        <hr />
+
+        <h4>Size</h4>
+        <div className={styles.color} style={{ marginBottom: '20px' }}>
+          <div className={styles.item}>
+            <UiSwitch size="s" />
+            <label>Small</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch size="s" label="Label" />
+            <label>Small</label>
+          </div>
+        </div>
+        <div className={styles.color}>
+          <div className={styles.item}>
+            <UiSwitch />
+            <label>Medium (Default)</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch label="Label" />
+            <label>Medium (with Label)</label>
+          </div>
+        </div>
+
+        <hr />
+
+        <h4>State</h4>
+        <div className={styles.state}>
+          <div className={styles.item}>
+            <UiSwitch disabled />
+            <label>Disabled</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch label="Disabled" disabled />
+            <label>Disabled</label>
+          </div>
+
+          <div className={styles.item}>
+            <UiSwitch checked />
+            <label>Checked</label>
+          </div>
+          <div className={styles.item}>
+            <UiSwitch label="Checked" checked />
+            <label>Checked</label>
           </div>
         </div>
       </div>

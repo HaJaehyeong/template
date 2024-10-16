@@ -1,6 +1,6 @@
 'use client';
 import { ButtonColor } from '@/types/types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './switch.module.scss';
 
 type UiSwitchProps = {
@@ -9,7 +9,7 @@ type UiSwitchProps = {
   size?: 's' | 'm';
   label?: string;
   disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (checked: boolean) => void;
 };
 
 const UiSwitch: React.FC<UiSwitchProps> = ({
@@ -23,10 +23,18 @@ const UiSwitch: React.FC<UiSwitchProps> = ({
   const [toggle, setToggle] = useState(checked);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(event);
-    }
+    setToggle(event.target.checked);
   };
+
+  const handleClick = () => {
+    setToggle((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(toggle);
+    }
+  }, [toggle]);
 
   return (
     <div className={`${styles.switchWrapper} ${styles[size]}`}>
@@ -34,12 +42,12 @@ const UiSwitch: React.FC<UiSwitchProps> = ({
         type="checkbox"
         className={`${styles.toggle} ${styles[color]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
         checked={toggle}
-        onClick={() => (disabled ? {} : setToggle(!toggle))}
+        // onClick={() => (disabled ? {} : setToggle(!toggle))}
         onChange={handleToggle}
       />
       <div
         className={`${styles.switch} ${styles[color]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
-        onClick={() => (disabled ? {} : setToggle(!toggle))}
+        onClick={handleClick}
       />
       {label && <span className={disabled ? styles.disabled : ''}>{label}</span>}
     </div>
