@@ -1,4 +1,4 @@
-import UiButton from '@/ui/button/button';
+import UiTransferList from '@/ui/transfer-list/transfer-list';
 import { memo } from 'react';
 import styles from './transfer-list-sample.module.scss';
 
@@ -6,12 +6,31 @@ const TransferListSample: React.FC = () => {
   return (
     <>
       <div>
-        <h4>Variant</h4>
-        <h5>Contained (Default)</h5>
+        <h4>Samples</h4>
         <div className={styles.variant}>
           <div className={styles.item}>
-            <UiButton value="Button" />
-            <label>Default</label>
+            <UiTransferList leftDatas={['List item1', 'List item2', 'List item3', 'List item4']} />
+            <label>Default Type</label>
+          </div>
+          <div className={styles.item}>
+            <UiTransferList
+              type="enhanced"
+              leftTitle="Choises"
+              rightTitle="Chosen"
+              leftDatas={['List item', 'List item', 'List item', 'List item']}
+            />
+            <label>Enhanced Type</label>
+          </div>
+          <div className={styles.item}>
+            <UiTransferList
+              type="enhanced"
+              leftTitle="Choises"
+              leftSubTitle=">_ <"
+              rightTitle="Chosen"
+              rightSubTitle="ㅇㅂㅇ"
+              leftDatas={['List item', 'List item', 'List item', 'List item']}
+            />
+            <label>Enhanced Type: sub title</label>
           </div>
         </div>
       </div>

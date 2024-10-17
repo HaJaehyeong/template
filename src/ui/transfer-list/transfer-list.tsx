@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import UiButton from '../button/button';
 import UiCheckBox from '../checkbox/checkbox';
 import styles from './transfer-list.module.scss';
@@ -18,6 +18,7 @@ type UiTransferListProps =
       leftSubTitle?: string;
       rightTitle: string;
       rightSubTitle?: string;
+      onChange?: ({ leftDatas, rightDatas }: { leftDatas: string[]; rightDatas: string[] }) => void;
     }
   | {
       type?: 'default';
@@ -27,6 +28,7 @@ type UiTransferListProps =
       leftSubTitle?: never;
       rightTitle?: never;
       rightSubTitle?: never;
+      onChange?: ({ leftDatas, rightDatas }: { leftDatas: string[]; rightDatas: string[] }) => void;
     };
 
 const UiTransferList: React.FC<UiTransferListProps> = ({
@@ -37,11 +39,14 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
   leftSubTitle,
   rightTitle,
   rightSubTitle,
+  onChange,
 }) => {
   const initialItems = (datas: string[]): Item[] => datas.map((data) => ({ label: data, checked: false }));
 
   const [leftItems, setLeftItems] = useState<Item[]>(initialItems(leftDatas));
   const [rightItems, setRightItems] = useState<Item[]>(initialItems(rightDatas));
+  const [leftSelectAll, setLeftSelectAll] = useState<boolean>(false);
+  const [rightSelectAll, setRightSelectAll] = useState<boolean>(false);
 
   const toggleItemCheck = useCallback((index: number, listType: 'left' | 'right') => {
     const updateItems = (items: Item[], idx: number) =>
@@ -55,7 +60,6 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
   const moveItems = useCallback(
     (
       from: Item[],
-
       setFrom: React.Dispatch<React.SetStateAction<Item[]>>,
       setTo: React.Dispatch<React.SetStateAction<Item[]>>,
       all = false
@@ -76,10 +80,9 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
     []
   );
 
-  const handleToLeftTransferClick = useCallback(
-    () => moveItems(rightItems, setRightItems, setLeftItems),
-    [rightItems, leftItems, moveItems]
-  );
+  const handleToLeftTransferClick = useCallback(() => {
+    moveItems(rightItems, setRightItems, setLeftItems);
+  }, [rightItems, leftItems, moveItems]);
 
   const handleToRightTransferClick = useCallback(
     () => moveItems(leftItems, setLeftItems, setRightItems),
@@ -96,6 +99,23 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
     [leftItems, rightItems, moveItems]
   );
 
+  const allSelectLeftItems = (isChecked: boolean) => {
+    setLeftSelectAll(isChecked);
+    if (isChecked) {
+      setLeftItems(leftItems.map((item) => ({ ...item, checked: true })));
+    } else {
+      setLeftItems(leftItems.map((item) => ({ ...item, checked: false })));
+    }
+  };
+  const allSelectRightItems = (isChecked: boolean) => {
+    setRightSelectAll(isChecked);
+    if (isChecked) {
+      setRightItems(rightItems.map((item) => ({ ...item, checked: true })));
+    } else {
+      setRightItems(rightItems.map((item) => ({ ...item, checked: false })));
+    }
+  };
+
   const renderItems = useCallback(
     (items: Item[], listType: 'left' | 'right') =>
       items.map((item, index) => (
@@ -111,12 +131,21 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
     [toggleItemCheck, type]
   );
 
+  useEffect(() => {
+    if (onChange) {
+      onChange({
+        leftDatas: leftItems.map((item) => item.label),
+        rightDatas: rightItems.map((item) => item.label),
+      });
+    }
+  }, [leftItems, rightItems]);
+
   return (
     <div className={styles.transferListWrapper}>
       <div className={`${styles.leftList} ${type === 'enhanced' ? styles.enhanced : ''} popover square-false shadow6`}>
         {type === 'enhanced' && (
           <div className={`${styles.item} ${styles.enhancedItem}`}>
-            <UiCheckBox />
+            <UiCheckBox checked={leftSelectAll} onChange={(e) => allSelectLeftItems(e.target.checked)} />
             <div className={styles.title}>
               <span>{leftTitle}</span>
               {leftSubTitle && <span className={styles.sub}>{leftSubTitle}</span>}
@@ -164,7 +193,7 @@ const UiTransferList: React.FC<UiTransferListProps> = ({
       <div className={`${styles.rightList} ${type === 'enhanced' ? styles.enhanced : ''} popover square-false shadow6`}>
         {type === 'enhanced' && (
           <div className={`${styles.item} ${styles.enhancedItem}`}>
-            <UiCheckBox />
+            <UiCheckBox checked={rightSelectAll} onChange={(e) => allSelectRightItems(e.target.checked)} />
             <div className={styles.title}>
               <span>{rightTitle}</span>
               {rightSubTitle && <span className={styles.sub}>{rightSubTitle}</span>}
