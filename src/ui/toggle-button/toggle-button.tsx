@@ -1,5 +1,5 @@
 import { ButtonSize } from '@/types/types';
-import { RiAlignLeft } from '@remixicon/react';
+import { RemixiconComponentType, RiAlignLeft } from '@remixicon/react';
 import styles from './toggle-button.module.scss';
 
 type UiToggleButtonProps = {
@@ -7,7 +7,8 @@ type UiToggleButtonProps = {
   disabled?: boolean;
   size?: ButtonSize;
   divider?: boolean;
-  handleClick?: () => void;
+  icon?: RemixiconComponentType;
+  onClick?: () => void;
 };
 
 const UiToggleButton: React.FC<UiToggleButtonProps> = ({
@@ -15,20 +16,17 @@ const UiToggleButton: React.FC<UiToggleButtonProps> = ({
   disabled = false,
   size = 'm',
   divider = true,
-  handleClick,
+  icon: Icon = RiAlignLeft,
+  onClick,
 }) => {
   return (
     <div
       className={`${styles.toggleButtonWrapper} ${styles[size]} ${active ? styles.active : ''} ${
         divider ? '' : styles.dividerFalse
-      }`}
-      onClick={handleClick}
+      } ${disabled ? styles.disabled : ''}`}
+      onClick={onClick}
     >
-      <RiAlignLeft
-        className={styles.icon}
-        size={24}
-        color={disabled ? 'var(--action-disabled)' : 'var(--text-primary)'}
-      />
+      <Icon className={styles.icon} size={24} color={disabled ? 'var(--action-disabled)' : 'var(--text-primary)'} />
     </div>
   );
 };

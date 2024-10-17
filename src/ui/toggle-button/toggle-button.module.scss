@@ -6,6 +6,16 @@
   box-shadow: -1px 0px 0px 0px #0000001f inset;
   cursor: pointer;
 
+  &:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
   &.s {
     padding: 4px;
   }
@@ -24,5 +34,9 @@
 
   &.divider-false {
     box-shadow: 0 0 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
   }
 }

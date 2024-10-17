@@ -14,7 +14,6 @@ import {
   RiMenuAddLine,
   RiMenuLine,
   RiRadioButtonLine,
-  RiSquareLine,
   RiStarHalfLine,
   RiText,
   RiToggleLine,
@@ -37,7 +36,6 @@ export const NAVIGATION_LIST = [
   { name: 'Slider', path: '/how-to-use/slider', icon: RiEqualizerLine, sortNo: 13 },
   { name: 'Switch', path: '/how-to-use/switch', icon: RiToggleLine, sortNo: 14 },
   { name: 'Text Field', path: '/how-to-use/text-field', icon: RiText, sortNo: 15 },
-  { name: 'Toggle Button', path: '/how-to-use/toggle-button', icon: RiSquareLine, sortNo: 16 },
   { name: 'Toggle Button Group', path: '/how-to-use/toggle-button-group', icon: RiLayoutGridLine, sortNo: 17 },
   { name: 'Transfer List', path: '/how-to-use/transfer-list', icon: RiArrowLeftRightLine, sortNo: 18 },
 ];
