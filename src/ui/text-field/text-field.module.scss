@@ -105,7 +105,7 @@
     width: calc(100% - 25px);
     height: 59px;
 
-    background-color: var(--other-input-background);
+    background-color: var(--other-filed-input-background);
     border-bottom: solid 1px var(--other-ouline-border);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -219,4 +219,13 @@
   align-items: center;
 
   color: var(--action-active);
+}
+.suffix.outline,
+.prefix.outline {
+  padding-top: 4px;
+}
+
+.suffix.filed,
+.prefix.filed {
+  padding-top: 14px;
 }

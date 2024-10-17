@@ -1,3 +1,4 @@
+'use client';
 import { RemixiconComponentType } from '@remixicon/react';
 import React, { InputHTMLAttributes, useEffect, useState } from 'react';
 import styles from './text-field.module.scss';
@@ -28,6 +29,7 @@ const UiTextField: React.FC<UiTextFieldProps> = ({
   helperText,
   fieldPrefix,
   fieldSuffix,
+  onChange,
   ...props
 }) => {
   const [active, setActive] = useState(false);
@@ -54,7 +56,10 @@ const UiTextField: React.FC<UiTextFieldProps> = ({
     return fieldSuffix;
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) onChange(event);
+    setValue(event.target.value);
+  };
   const handleFocus = () => setFocused(true);
   const handleBlur = () => setFocused(false);
 
@@ -75,7 +80,7 @@ const UiTextField: React.FC<UiTextFieldProps> = ({
           {label}
         </label>
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: '5px' }}>
-          {fieldPrefix && <div className={`${styles.prefix}`}>{renderPrefix()}</div>}
+          {fieldPrefix && <div className={`${styles.prefix} ${styles[variant]}`}>{renderPrefix()}</div>}
           <input
             type={type}
             value={value}
@@ -87,7 +92,7 @@ const UiTextField: React.FC<UiTextFieldProps> = ({
             autoComplete="new-password"
             {...props}
           />
-          {fieldSuffix && <div className={`${styles.suffix}`}>{renderSuffix()}</div>}
+          {fieldSuffix && <div className={`${styles.suffix} ${styles[variant]}`}>{renderSuffix()}</div>}
         </div>
       </fieldset>
       {helperText && (
